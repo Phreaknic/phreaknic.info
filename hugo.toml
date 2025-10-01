@@ -58,8 +58,12 @@ theme = 'hugo-theme-m10c'
     url = "https://twitter.com/phreaknic"
   [[params.social]]
     icon = "brand-mastodon"
-    name = "Twitter"
+    name = "Mastodon"
     url = "https://infosec.exchange/@phreaknic"
+  [[params.social]]
+    icon = "brand-discord"
+    name = "Discord"
+    url = "https://discord.gg/mFFa9RAFff"
   [[params.banner]]
     name = "Nashville 2600"
     url = "https://nashville2600.org"
