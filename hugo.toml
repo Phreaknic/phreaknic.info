@@ -1,0 +1,74 @@
+baseURL = 'https://phreaknic.info'
+languageCode = 'en-us'
+title = 'PHREAKNIC 26'
+#theme = 'hugo-theme-hello-4s3ti'
+theme = 'hugo-theme-m10c'
+#theme = 'poison-master'
+
+[pagination]
+  pagerSize = 8
+
+[menu]
+  [[menu.main]]
+    identifier = "home"
+    name = "Home"
+    url = "/"
+    weight = 1
+  #[[menu.main]]
+  #  identifier = "tags"
+  #  name = "Tags"
+  #  url = "/tags/"
+  #  weight = 2
+  [[menu.main]]
+    identifier = "about"
+    name = "About"
+    url = "/about/"
+    weight = 3
+  [[menu.main]]
+    identifier = "Speak"
+    name = "Speak"
+    url = "https://docs.google.com/forms/d/e/1FAIpQLSfbCwlhnVkiTt55ZzluP4VuBKcv0_joB5RAh5FVz_WuQm-FDA/viewform"
+    weight = 4
+  [[menu.main]]
+    identifier = "Volunteer"
+    name = "Volunteer"
+    url = "https://docs.google.com/forms/d/e/1FAIpQLScTLRculTZZ3m9yYZMHwk7_FFW0WYaTiKvsCvYypt2BUFw0yA/viewform"
+    weight = 5
+  [[menu.main]]
+    identifier = "Preregister"
+    name = "Preregister"
+    url = "https://phreaknic.square.site/"
+    weight = 6
+
+[params]
+  avatar = "phreaknic-26-logo.png"
+  backgroundImage = 'static/background.jpg'
+  defaultTheme = "dark"
+  EnableThemeToggle = true
+  author = "Phreaknic Staff"
+  description = "Murfreesboro, TN November 14-15, 2025"
+  menu_item_separator = " - "
+  #[[params.social]]
+  #  icon = "brand-github"
+  #  name = "Github"
+  #  url = "https://github.com/gohugoio"
+  [[params.social]]
+    icon = "brand-x"
+    name = "X"
+    url = "https://twitter.com/phreaknic"
+  [[params.social]]
+    icon = "brand-mastodon"
+    name = "Twitter"
+    url = "https://infosec.exchange/@phreaknic"
+  [[params.banner]]
+    name = "Nashville 2600"
+    url = "https://nashville2600.org"
+    image = "2600_Wide_BW.png"
+  [[params.banner]]
+    name = "BSides Nashville"
+    url = "https://bsidesnash.org"
+    image = "bsides-nashville-blackwhite-logo-1500x1500-2-01-e1577911057831.png"
+  [[params.banner]]
+    name = "Nashsec"
+    url = "https://discord.gg/NashSec"
+    image = "nashsec.webp"
