@@ -24,10 +24,15 @@ theme = 'hugo-theme-m10c'
     name = "About"
     url = "/about/"
     weight = 3
+  #[[menu.main]]
+  #  identifier = "Speak"
+  #  name = "Speak"
+  #  url = "https://docs.google.com/forms/d/e/1FAIpQLSfbCwlhnVkiTt55ZzluP4VuBKcv0_joB5RAh5FVz_WuQm-FDA/viewform"
+  #  weight = 4
   [[menu.main]]
-    identifier = "Speak"
-    name = "Speak"
-    url = "https://docs.google.com/forms/d/e/1FAIpQLSfbCwlhnVkiTt55ZzluP4VuBKcv0_joB5RAh5FVz_WuQm-FDA/viewform"
+    identifier = "Speakers"
+    name = "Speakers"
+    url = "/speakers/"
     weight = 4
   [[menu.main]]
     identifier = "Volunteer"
