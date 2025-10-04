@@ -47,7 +47,7 @@
       <div class="hide-mobile">
         {{ range . }}
           <a href="{{ .url }}" target="_blank" rel="noreferrer noopener me" style="clear: both; display: block">
-            <img src="{{ .image }}" alt="{{ .name  }}" style="border: .5rem solid #57cc8a; width: 15rem" />
+            <img src="{{ .image | relURL }}" alt="{{ .name  }}" style="border: .5rem solid #57cc8a; width: 15rem" />
 	  </a>
 	{{ end }}
       </div>
@@ -63,7 +63,7 @@
       <div>
         {{ range . }}
           <a href="{{ .url }}" target="_blank" rel="noreferrer noopener me" style="clear: both; display: block">
-            <img src="{{ .image }}" alt="{{ .name  }}" style="border: .5rem solid #57cc8a; width: 15rem" />
+            <img src="{{ .image | relURL }}" alt="{{ .name  }}" style="border: .5rem solid #57cc8a; width: 15rem" />
 	  </a>
 	{{ end }}
       </div>
