@@ -70,7 +70,7 @@ _NSAKEY was a variable name discovered in Windows NT 4 SP5 in 1999 by Andrew D. 
 
 ## poiupoiu
 
-🫣
+An engineer from Huntsville, AL. He enjoys Linux, rsync, btrfs, video editing and encoding, and hacking. He continues his streak as AV Director, as well as speaker this year.
 
 ## r0nk
 
