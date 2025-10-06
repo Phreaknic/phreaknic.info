@@ -7,11 +7,11 @@ title = "Schedule"
 | Time | Speaker | Talk |
 |------|---------|------|
 | 9:00 AM | 🧾 Registration Open |
-| 9:00 AM | [_NSAKEY](/speakers/#nsakey) | From OSINT to OH SHIT |
+| 9:00 AM | 👋 Welcom to PhreakNIC |
 | 10:00 AM | [Corgi](/speakers/#corgi) | Who Queries the Query? |
 | 10:30 AM | [TipsyBacchus](/speakers/#tipsybacchus) | Misdirection & Break-Ins: Magic Tricks for Physical Red Teams |
 | 11:00 AM | [_NSAKEY](/speakers/#nsakey) | From OSINT to OH SHIT |
-| 12:00 PM | 🌭 Lunch | |
+| 12:00 PM | 🌭 Lunch |
 | 1:00 PM | [LambdaCalculus](/speakers/#lambdacalculus) | Gravitational Lensing of Red Star OS: Snoops Harder than Rimmer! |
 | 2:00 PM | [Samantha Thompson (Hollow)](/speakers/#samantha-thompson-hollow) | One TTP, Infinite Fails: Why You're Playing Checkers in a Chess Threatscape |
 | 3:00 PM | [Tyler Crumpton](/speakers/#tyler-crumpton) | Defaced Misplaced E-Waste: Erase and Replace Electronic Shelf Labels|
@@ -21,13 +21,13 @@ title = "Schedule"
 | 5:30 PM | 🌭 Dinner | |
 | 7:00 PM | [Elonka](/speakers/#elonka) | Frozen Signals: Collinson, Franklin & the Lost Arctic Fleet (1840–1860) |
 | 8:00 PM | [Mog](/speakers/#mog) | The Singularity of Data: Navigating the Dark Patterns of the Algorithmic Panopticon |
-| 9:00 PM | 🍿 Board Games / Hangout | |
+| 9:00 PM | 🍿 Board Games / Hangout |
 
 ## Saturday - Nov 15th
 
 | Time | Speaker | Session |
 |------|---------|---------|
-| 9:00 AM | 🧾 Registration Open | |
+| 9:00 AM | 🧾 Registration Open |
 | 10:00 AM | [poiupoiu](/speakers/#poiupoiu) | WSUS? More like WSucks! Managing a WSUS Server in a Standalone Environment |
 | 11:00 AM | [Altk3y](/speakers/#altk3y) | From Israel with Love: Stealing Stolen Code, Grey Market Tech, and DOOMing Forensics Investigations on a Budget |
 | 12:00 PM | 🌭 Lunch | |
@@ -39,6 +39,6 @@ title = "Schedule"
 | 5:00 PM | [dusty](/speakers/#dusty) | Vibe-coding w/ robots: Claude, ChatGPT, and Codex Agents |
 | 5:30 PM | 🌭 Dinner | |
 | 7:00 PM | [Elonka](/speakers/#elonka) | Kryptos: The CIA's (not‑so) Enduring Enigma |
-| 8:00 PM | 🕹️ The Non-Infringing PhreakNIC Game Show! | |
+| 8:00 PM | 🕹️ The Non-Infringing PhreakNIC Game Show! |
 | 9:00 PM | 🎬 Closing Ceremonies | |
 | 9:15 PM | ⚡️ Lightning Talks | |
