@@ -9,11 +9,11 @@ theme = 'hugo-theme-m10c'
   pagerSize = 8
 
 [menu]
-  [[menu.main]]
-    identifier = "home"
-    name = "Home"
-    url = "/"
-    weight = 1
+  #[[menu.main]]
+  #  identifier = "home"
+  #  name = "Home"
+  #  url = "/"
+  #  weight = 1
   #[[menu.main]]
   #  identifier = "tags"
   #  name = "Tags"
@@ -24,16 +24,16 @@ theme = 'hugo-theme-m10c'
     name = "About"
     url = "/about/"
     weight = 3
+  [[menu.main]]
+    identifier = "Schedule"
+    name = "Schedule"
+    url = "/schedule/"
+    weight = 2
   #[[menu.main]]
   #  identifier = "Speak"
   #  name = "Speak"
   #  url = "https://docs.google.com/forms/d/e/1FAIpQLSfbCwlhnVkiTt55ZzluP4VuBKcv0_joB5RAh5FVz_WuQm-FDA/viewform"
   #  weight = 4
-  [[menu.main]]
-    identifier = "Speakers"
-    name = "Speakers"
-    url = "/speakers/"
-    weight = 4
   #[[menu.main]]
   #  identifier = "Volunteer"
   #  name = "Volunteer"
@@ -43,7 +43,7 @@ theme = 'hugo-theme-m10c'
     identifier = "Preregister"
     name = "Preregister"
     url = "https://phreaknic.square.site/"
-    weight = 6
+    weight = 1
 
 [params]
   avatar = "phreaknic-26-logo.png"
