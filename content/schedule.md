@@ -7,7 +7,7 @@ title = "Schedule"
 | Time | Speaker | Talk |
 |------|---------|------|
 | 9:00 AM | 🧾 Registration Open |
-| 9:30 AM | 👋 Welcom to PhreakNIC |
+| 9:30 AM | 👋 Welcome to PhreakNIC |
 | 10:00 AM | [Corgi](/speakers/#corgi) | Who Queries the Query? |
 | 10:30 AM | [TipsyBacchus](/speakers/#tipsybacchus) | Misdirection & Break-Ins: Magic Tricks for Physical Red Teams |
 | 11:00 AM | [_NSAKEY](/speakers/#nsakey) | From OSINT to OH SHIT |
