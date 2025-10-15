@@ -115,7 +115,7 @@ From hijacking audio systems to sending rogue print jobs to receipt printers, Iâ
 
 ## Matt Varian {#matt-varian}
 
-**Talk:** Industrial cameras
+**Talk:** Used Machine Vision Cameras: Why use Industrial Cameras for your project
 
 A brief overview of some of the unique knobs you get control of when you skip using a USB webcam for your project and buy old used cameras often found in industrial automation. 
 
