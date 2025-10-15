@@ -31,7 +31,7 @@ title = "Schedule"
 | 10:00 AM | [poiupoiu](/speakers/#poiupoiu) | WSUS? More like WSucks! Managing a WSUS Server in a Standalone Environment |
 | 11:00 AM | [Altk3y](/speakers/#altk3y) | From Israel with Love: Stealing Stolen Code, Grey Market Tech, and DOOMing Forensics Investigations on a Budget |
 | 12:00 PM | 🌭 Lunch | |
-| 1:00 PM | [Matt Varian](/speakers/#matt-varian) | Industrial cameras |
+| 1:00 PM | [Matt Varian](/speakers/#matt-varian) | Used Machine Vision Cameras: Why use Industrial Cameras for your project |
 | 1:30 PM | [brimstone](/speakers/#brimstone) | How to Brew Your Own AI Slop at Home |
 | 2:00 PM | [r0nk](/speakers/#r0nk) | Emergence: the rebellion against thermodynamics. |
 | 3:00 PM | [Bonnie](/speakers/#bonnie) | Recipes for Ruin - Cooking the Books and How to Save the Meal |
