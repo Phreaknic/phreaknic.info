@@ -27,5 +27,5 @@ jobs:
               uses: rossjrw/pr-preview-action@v1
               with:
                   source-dir: ./build/
-                  preview-branch: main
+                  preview-branch: pn27
                   qr-code: true
