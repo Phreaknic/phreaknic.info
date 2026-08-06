@@ -5,6 +5,8 @@
   const views = document.querySelectorAll('.view');
   const timestampEl = document.querySelector('.timestamp');
   const countdownEl = document.getElementById('countdown');
+  const sidebar = document.getElementById('site-sidebar');
+  const sidebarToggle = document.querySelector('.sidebar-toggle');
   const eventDate = new Date('2026-11-06T09:30:00-06:00').getTime();
 
   let speakers = [];
@@ -161,8 +163,21 @@
       e.preventDefault();
       switchView(this.getAttribute('data-view'));
       history.pushState(null, '', '#' + this.getAttribute('data-view'));
+      if (window.innerWidth <= 768 && sidebar && sidebarToggle) {
+        sidebar.classList.remove('is-expanded');
+        sidebarToggle.setAttribute('aria-expanded', 'false');
+        sidebarToggle.setAttribute('aria-label', 'Open navigation menu');
+      }
     });
   });
+
+  if (sidebar && sidebarToggle) {
+    sidebarToggle.addEventListener('click', function () {
+      var isExpanded = sidebar.classList.toggle('is-expanded');
+      sidebarToggle.setAttribute('aria-expanded', String(isExpanded));
+      sidebarToggle.setAttribute('aria-label', isExpanded ? 'Close navigation menu' : 'Open navigation menu');
+    });
+  }
 
   // ===== SPEAKER DETAIL (modal) =====
   var modalOverlay = document.getElementById('speaker-modal');

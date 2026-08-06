@@ -212,6 +212,10 @@ body {
   margin-bottom: 32px;
 }
 
+.sidebar-toggle {
+  display: none;
+}
+
 .event-info-date {
   font-family: 'Orbitron', sans-serif;
   font-size: 0.63rem;
@@ -964,6 +968,29 @@ body {
     width: 60px;
     min-width: 60px;
     padding: 20px 8px;
+    overflow-x: hidden;
+    transition: width 0.25s ease, min-width 0.25s ease, padding 0.25s ease;
+  }
+
+  .sidebar-toggle {
+    display: flex;
+    width: 44px;
+    height: 36px;
+    margin: -8px 0 12px;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid var(--border-color);
+    background: var(--bg-tertiary);
+    color: var(--cyan);
+    cursor: pointer;
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 1.1rem;
+  }
+
+  .sidebar.is-expanded {
+    width: 220px;
+    min-width: 220px;
+    padding: 20px;
   }
 
   .sidebar-label,
@@ -1029,6 +1056,36 @@ body {
 
   .event-info {
     display: none;
+  }
+
+  .sidebar.is-expanded .sidebar-label {
+    display: block;
+  }
+
+  .sidebar.is-expanded .nav-link {
+    justify-content: flex-start;
+    padding: 10px 12px;
+    gap: 10px;
+  }
+
+  .sidebar.is-expanded .nav-icon {
+    display: inline;
+  }
+
+  .sidebar.is-expanded .nav-label {
+    writing-mode: horizontal-tb;
+    text-orientation: mixed;
+    transform: none;
+    font-size: 0.95rem;
+    letter-spacing: 1px;
+  }
+
+  .sidebar.is-expanded .event-info {
+    display: block;
+  }
+
+  .sidebar.is-expanded .sidebar-toggle {
+    margin-left: auto;
   }
 
   .countdown {
