@@ -212,6 +212,73 @@ body {
   margin-bottom: 32px;
 }
 
+.sidebar-toggle,
+.nav-list .info-toggle {
+  display: none;
+}
+
+.event-info-date {
+  font-family: 'Orbitron', sans-serif;
+  font-size: 0.63rem;
+  letter-spacing: 1px;
+  line-height: 1.65;
+  color: var(--cyan);
+  text-shadow: var(--glow-cyan);
+  margin-bottom: 8px;
+}
+
+.event-info-venue {
+  display: block;
+  font-family: 'Share Tech Mono', monospace;
+  font-size: 0.85rem;
+  letter-spacing: 0.25px;
+  line-height: 1.45;
+  color: var(--text-primary);
+  font-weight: 700;
+}
+
+.event-info-city {
+  display: block;
+  font-family: 'Share Tech Mono', monospace;
+  font-size: 0.78rem;
+  letter-spacing: 0.5px;
+  line-height: 1.55;
+  color: var(--text-secondary);
+  margin-bottom: 10px;
+}
+
+.event-info-location {
+  display: block;
+  text-decoration: none;
+}
+
+.event-info-location:hover .event-info-venue,
+.event-info-location:focus .event-info-venue {
+  color: var(--cyan);
+  text-shadow: var(--glow-cyan);
+}
+
+.event-info-location:hover .event-info-city,
+.event-info-location:focus .event-info-city {
+  color: var(--cyan-dim);
+}
+
+.event-info-link {
+  display: block;
+  color: var(--magenta-dim);
+  font-size: 0.72rem;
+  letter-spacing: 0.5px;
+  line-height: 1.8;
+  text-decoration: none;
+  transition: color 0.2s ease, text-shadow 0.2s ease;
+}
+
+.event-info-link:hover,
+.event-info-link:focus {
+  color: var(--magenta);
+  text-shadow: var(--glow-magenta);
+}
+
 .sidebar-label {
   font-size: 0.7rem;
   color: var(--text-dim);
@@ -902,6 +969,29 @@ body {
     width: 60px;
     min-width: 60px;
     padding: 20px 8px;
+    overflow-x: hidden;
+    transition: width 0.25s ease, min-width 0.25s ease, padding 0.25s ease;
+  }
+
+  .sidebar-toggle {
+    display: flex;
+    width: 44px;
+    height: 36px;
+    margin: -8px 0 12px;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid var(--border-color);
+    background: var(--bg-tertiary);
+    color: var(--cyan);
+    cursor: pointer;
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 1.1rem;
+  }
+
+  .sidebar.is-expanded {
+    width: 220px;
+    min-width: 220px;
+    padding: 20px;
   }
 
   .sidebar-label,
@@ -917,6 +1007,18 @@ body {
     justify-content: center;
     padding: 12px 6px;
     gap: 6px;
+  }
+
+  .nav-list .info-toggle {
+    display: flex;
+    width: 100%;
+    border-top: 0;
+    border-right: 0;
+    border-bottom: 0;
+    background: transparent;
+    font-family: 'Share Tech Mono', monospace;
+    text-align: left;
+    cursor: pointer;
   }
 
   .nav-icon {
@@ -963,6 +1065,40 @@ body {
   .event-date {
     font-size: 0.65rem;
     letter-spacing: 1px;
+  }
+
+  .event-info {
+    display: none;
+  }
+
+  .sidebar.is-expanded .sidebar-label {
+    display: block;
+  }
+
+  .sidebar.is-expanded .nav-link {
+    justify-content: flex-start;
+    padding: 10px 12px;
+    gap: 10px;
+  }
+
+  .sidebar.is-expanded .nav-icon {
+    display: inline;
+  }
+
+  .sidebar.is-expanded .nav-label {
+    writing-mode: horizontal-tb;
+    text-orientation: mixed;
+    transform: none;
+    font-size: 0.95rem;
+    letter-spacing: 1px;
+  }
+
+  .sidebar.is-expanded .event-info {
+    display: block;
+  }
+
+  .sidebar.is-expanded .sidebar-toggle {
+    margin-left: auto;
   }
 
   .countdown {
