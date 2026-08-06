@@ -7,6 +7,8 @@
   const countdownEl = document.getElementById('countdown');
   const sidebar = document.getElementById('site-sidebar');
   const sidebarToggle = document.querySelector('.sidebar-toggle');
+  const infoToggle = document.querySelector('.info-toggle');
+  const eventInfoPanel = document.getElementById('event-info-panel');
   const eventDate = new Date('2026-11-06T09:30:00-06:00').getTime();
 
   let speakers = [];
@@ -163,21 +165,59 @@
       e.preventDefault();
       switchView(this.getAttribute('data-view'));
       history.pushState(null, '', '#' + this.getAttribute('data-view'));
-      if (window.innerWidth <= 768 && sidebar && sidebarToggle) {
-        sidebar.classList.remove('is-expanded');
-        sidebarToggle.setAttribute('aria-expanded', 'false');
-        sidebarToggle.setAttribute('aria-label', 'Open navigation menu');
+      if (window.innerWidth <= 768) {
+        setSidebarExpanded(false);
       }
     });
   });
 
+  function setSidebarExpanded(isExpanded) {
+    if (!sidebar || !sidebarToggle) return;
+
+    sidebar.classList.toggle('is-expanded', isExpanded);
+    sidebarToggle.textContent = isExpanded ? '×' : '☰';
+    sidebarToggle.setAttribute('aria-expanded', String(isExpanded));
+    sidebarToggle.setAttribute('aria-label', isExpanded ? 'Close navigation menu' : 'Open navigation menu');
+
+    if (infoToggle) {
+      infoToggle.setAttribute('aria-expanded', String(isExpanded));
+    }
+
+    if (eventInfoPanel) {
+      eventInfoPanel.setAttribute('aria-hidden', window.innerWidth <= 768 ? String(!isExpanded) : 'false');
+    }
+  }
+
   if (sidebar && sidebarToggle) {
     sidebarToggle.addEventListener('click', function () {
-      var isExpanded = sidebar.classList.toggle('is-expanded');
-      sidebarToggle.setAttribute('aria-expanded', String(isExpanded));
-      sidebarToggle.setAttribute('aria-label', isExpanded ? 'Close navigation menu' : 'Open navigation menu');
+      setSidebarExpanded(!sidebar.classList.contains('is-expanded'));
     });
   }
+
+  if (sidebar && infoToggle) {
+    infoToggle.addEventListener('click', function () {
+      setSidebarExpanded(!sidebar.classList.contains('is-expanded'));
+    });
+  }
+
+  document.addEventListener('click', function (e) {
+    if (
+      window.innerWidth <= 768 &&
+      sidebar &&
+      sidebar.classList.contains('is-expanded') &&
+      !sidebar.contains(e.target)
+    ) {
+      setSidebarExpanded(false);
+    }
+  });
+
+  window.addEventListener('resize', function () {
+    if (window.innerWidth > 768) {
+      setSidebarExpanded(false);
+    }
+  });
+
+  setSidebarExpanded(false);
 
   // ===== SPEAKER DETAIL (modal) =====
   var modalOverlay = document.getElementById('speaker-modal');

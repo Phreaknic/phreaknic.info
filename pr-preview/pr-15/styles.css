@@ -212,7 +212,8 @@ body {
   margin-bottom: 32px;
 }
 
-.sidebar-toggle {
+.sidebar-toggle,
+.nav-list .info-toggle {
   display: none;
 }
 
@@ -1006,6 +1007,18 @@ body {
     justify-content: center;
     padding: 12px 6px;
     gap: 6px;
+  }
+
+  .nav-list .info-toggle {
+    display: flex;
+    width: 100%;
+    border-top: 0;
+    border-right: 0;
+    border-bottom: 0;
+    background: transparent;
+    font-family: 'Share Tech Mono', monospace;
+    text-align: left;
+    cursor: pointer;
   }
 
   .nav-icon {
