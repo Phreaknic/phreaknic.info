@@ -22,16 +22,28 @@
 
   <div class="layout">
     <!-- LEFT SIDEBAR NAV -->
-    <nav class="sidebar">
+    <nav id="site-sidebar" class="sidebar">
+      <button class="sidebar-toggle" type="button" aria-controls="site-sidebar" aria-expanded="false" aria-label="Open navigation menu">☰</button>
       <div class="sidebar-section">
         <h3 class="sidebar-label">// navigate</h3>
         <ul class="nav-list">
           <li><a href="#" class="nav-link active" data-view="news"><span class="nav-icon">◈</span><span class="nav-label">News</span></a></li>
           <li><a href="#" class="nav-link" data-view="faq"><span class="nav-icon">◈</span><span class="nav-label">FAQ</span></a></li>
+          <li><button class="nav-link info-toggle" type="button" aria-controls="event-info-panel" aria-expanded="false"><span class="nav-icon">◈</span><span class="nav-label">Info</span></button></li>
           <!--li><a href="#" class="nav-link" data-view="schedule"><span class="nav-icon">◈</span><span class="nav-label">Schedule</span></a></li-->
           <!--li><a href="#" class="nav-link" data-view="speakers"><span class="nav-icon">◈</span><span class="nav-label">Speakers</span></a></li-->
         </ul>
      </div>
+      <section id="event-info-panel" class="sidebar-section event-info" aria-labelledby="event-info-title">
+        <h3 id="event-info-title" class="sidebar-label">// info</h3>
+        <p class="event-info-date">Nov 6–7, 2026</p>
+        <a href="https://maps.app.goo.gl/gr9v82GgnpGujjRX9" class="event-info-location" target="_blank" rel="noopener">
+          <span class="event-info-venue">Clarion Inn &amp; Suites</span>
+          <span class="event-info-city">Murfreesboro, TN</span>
+        </a>
+        <a href="https://forms.gle/nsm6XnfNVutK9PrE7" class="event-info-link" target="_blank" rel="noopener">[ Submit talk ↗ ]</a>
+        <a href="https://www.choicehotels.com/reservations/groups/WO48U6" class="event-info-link" target="_blank" rel="noopener">[ Book room ↗ ]</a>
+      </section>
        <div class="sidebar-section friends-sidebar">
           <h3 class="sidebar-label">// friends</h3>
           <a href="https://nashville2600.org" target="_blank" rel="noopener" class="friends-link">
