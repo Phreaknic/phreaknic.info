@@ -495,6 +495,30 @@
   updateCountdown();
   setInterval(updateCountdown, 1000);
 
+  // ===== VIDEO PLAYERS =====
+  document.querySelectorAll('.video-frame').forEach(function (frame) {
+    var video = frame.querySelector('video');
+    var playBtn = frame.querySelector('.video-play-overlay');
+    if (!video || !playBtn) return;
+
+    playBtn.addEventListener('click', function () {
+      video.muted = false;
+      video.play();
+    });
+
+    video.addEventListener('play', function () {
+      frame.classList.add('is-playing');
+    });
+
+    video.addEventListener('pause', function () {
+      frame.classList.remove('is-playing');
+    });
+
+    video.addEventListener('ended', function () {
+      frame.classList.remove('is-playing');
+    });
+  });
+
   // ===== INIT =====
   var initialRoute = parseHash();
 	console.log("initialRoute", initialRoute);
