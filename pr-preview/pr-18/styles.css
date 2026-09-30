@@ -608,14 +608,6 @@ body {
   letter-spacing: 1px;
 }
 
-.post-video {
-  display: block;
-  width: 100%;
-  margin-bottom: 16px;
-  border: 1px solid var(--border-color);
-  background: var(--bg-primary);
-}
-
 .topic-list {
   list-style: none;
   padding: 0;
@@ -634,6 +626,68 @@ body {
   left: 0;
   color: var(--cyan);
   text-shadow: var(--glow-cyan);
+}
+
+.video-frame {
+  position: relative;
+  max-width: 600px;
+  margin: 4px 0 20px;
+  border: 1px solid var(--border-color);
+  background: #000;
+  overflow: hidden;
+}
+
+.post-video {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.video-play-overlay {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  padding: 0;
+  border: none;
+  background: rgba(10, 10, 15, 0.25);
+  cursor: pointer;
+}
+
+.video-play-overlay .play-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 88px;
+  height: 88px;
+  padding-left: 6px;
+  border: 2px solid var(--cyan);
+  border-radius: 50%;
+  background: rgba(10, 10, 15, 0.7);
+  color: var(--cyan);
+  font-size: 2rem;
+  box-shadow: var(--glow-cyan);
+  transition: all 0.2s ease;
+}
+
+.video-play-overlay:hover .play-icon {
+  background: var(--cyan);
+  color: var(--bg-primary);
+}
+
+.video-frame.is-playing .video-play-overlay {
+  display: none;
+}
+
+@media (max-width: 768px) {
+  .video-play-overlay .play-icon {
+    width: 64px;
+    height: 64px;
+    font-size: 1.5rem;
+  }
 }
 
 /* ===== FAQ & POST LINKS ===== */
