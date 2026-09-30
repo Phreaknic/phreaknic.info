@@ -7,6 +7,7 @@ images \
 schemas \
 script.js \
 styles.css \
+videos \
 ; do
 	cp -r "$f" build/
 done
