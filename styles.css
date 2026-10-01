@@ -288,6 +288,15 @@ body {
   font-family: 'Orbitron', sans-serif;
 }
 
+.logo-img {
+  display: block;
+  width: 100%;
+  max-width: 170px;
+  height: auto;
+  margin: 0 auto 24px;
+  mix-blend-mode: screen;
+}
+
 .nav-list {
   list-style: none;
 }
@@ -1165,6 +1174,14 @@ body {
 
   .countdown {
     font-size: 0.85rem;
+  }
+
+  .logo-img {
+    display: none;
+  }
+
+  .sidebar.is-expanded .logo-img {
+    display: block;
   }
 
   .footer-label,
