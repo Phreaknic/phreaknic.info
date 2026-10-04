@@ -55,7 +55,7 @@
       card.setAttribute('data-speaker', speaker.id);
       card.innerHTML =
         '<header class="speaker-heading">' +
-        '<h2 class="speaker-name"><a href="speakers/#speakers/' + encodeURIComponent(speaker.id) + '">' + escapeHtml(speaker.name) + '</a></h2>' +
+        '<h2 class="speaker-name"><a data-speaker-preview="' + escapeHtml(speaker.id) + '" href="speakers/#speakers/' + encodeURIComponent(speaker.id) + '">' + escapeHtml(speaker.name) + '</a></h2>' +
         '<p class="speaker-topic">' + escapeHtml(speaker.topic) + '</p></header>' +
         '<div class="speaker-bio">' + speaker.bio.map(function (p) { return '<p>' + escapeHtml(p) + '</p>'; }).join('') + '</div>';
       grid.appendChild(card);
@@ -182,6 +182,8 @@
 
   // ===== VIEW SWITCHING =====
   function switchView(viewName) {
+    var currentView = document.querySelector('.view.active');
+    var isNewView = !currentView || currentView.id !== 'view-' + viewName;
     navLinks.forEach(function (link) {
       var isActive = false;
       if (viewName === 'speaker-detail') {
@@ -196,7 +198,7 @@
       view.classList.toggle('active', view.id === 'view-' + viewName);
     });
 
-    window.scrollTo({ top: 0, behavior: 'smooth' });
+    if (isNewView) window.scrollTo({ top: 0, behavior: 'smooth' });
   }
 
   navLinks.forEach(function (link) {
@@ -303,7 +305,7 @@
     modalOverlay.classList.add('active');
     document.body.style.overflow = 'hidden';
     if (window.location.hash !== '#speakers/' + speakerId) pushRouteHash('#speakers/' + speakerId, { speakerView: backgroundView });
-    modalClose.focus();
+    modalClose.focus({ preventScroll: true });
   }
 
   function closeSpeakerModal(restoreRoute) {
@@ -376,7 +378,7 @@
     topicModalOverlay.classList.add('active');
     document.body.style.overflow = 'hidden';
     if (window.location.hash !== '#topics/' + topicId) pushRouteHash('#topics/' + topicId);
-    topicModalClose.focus();
+    topicModalClose.focus({ preventScroll: true });
   }
 
   function closeTopicModal(restoreRoute) {
@@ -452,9 +454,6 @@
       document.querySelectorAll('.speaker-profile').forEach(function (card) {
         var isActive = card.getAttribute('data-speaker') === route.speaker;
         card.classList.toggle('is-selected', isActive);
-        if (isActive && speakerBackgroundView() === 'speakers') {
-          card.scrollIntoView({ behavior: 'smooth', block: 'center' });
-        }
       });
       openSpeakerModal(route.speaker);
     } else if (route.view === 'topic-detail') {
