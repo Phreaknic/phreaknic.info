@@ -3,8 +3,8 @@ name: Validate JSON
 on:
   pull_request:
     paths:
-      - 'speakers.json'
-      - 'topics.json'
+      - 'api/v1/speakers.json'
+      - 'api/v1/topics.json'
       - 'schemas/**'
 
 jobs:
@@ -21,10 +21,10 @@ jobs:
             - type: json
               schema: ./schemas/topics.json
               files:
-                - ./topics.json
+                - ./api/v1/topics.json
               json_schema_version: draft-07
             - type: json
               schema: ./schemas/speakers.json
               files:
-                - ./speakers.json
+                - ./api/v1/speakers.json
               json_schema_version: draft-07
