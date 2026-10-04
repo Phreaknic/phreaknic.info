@@ -14,6 +14,10 @@
   var speakers = [];
   var topics = [];
 
+  function pushRouteHash(hash, state) {
+    history.pushState(state || null, '', window.location.pathname + window.location.search + hash);
+  }
+
   // ===== DATA LOADING =====
   function loadData() {
     return Promise.all([
@@ -28,7 +32,7 @@
     ]).then(function (results) {
       speakers = results[0];
       topics = results[1];
-      renderSpeakerCards(speakers);
+      renderSpeakerProfiles(speakers);
       renderSchedule(topics, speakers);
     }).catch(function (err) {
       console.error(err);
@@ -38,7 +42,7 @@
   }
 
   // ===== SPEAKERS =====
-  function renderSpeakerCards(data) {
+  function renderSpeakerProfiles(data) {
     var grid = document.getElementById('speakers-grid');
     if (!grid) return;
 
@@ -46,15 +50,13 @@
 
     data.forEach(function (speaker) {
       var card = document.createElement('article');
-      card.className = 'speaker-card';
+      card.className = 'speaker-profile';
       card.id = speaker.id;
       card.setAttribute('data-speaker', speaker.id);
       card.innerHTML =
-        '<div class="speaker-avatar">' +
-          '<div class="avatar-placeholder">' + escapeHtml(speaker.initials) + '</div>' +
-        '</div>' +
+        '<header class="speaker-heading">' +
         '<h2 class="speaker-name"><a href="speakers/#speakers/' + encodeURIComponent(speaker.id) + '">' + escapeHtml(speaker.name) + '</a></h2>' +
-        '<p class="speaker-topic">' + escapeHtml(speaker.topic) + '</p>' +
+        '<p class="speaker-topic">' + escapeHtml(speaker.topic) + '</p></header>' +
         '<div class="speaker-bio">' + speaker.bio.map(function (p) { return '<p>' + escapeHtml(p) + '</p>'; }).join('') + '</div>';
       grid.appendChild(card);
     });
@@ -159,6 +161,7 @@
           if (index) roomCell.appendChild(document.createTextNode(', '));
           var link = document.createElement('a');
           link.href = 'speakers/#speakers/' + encodeURIComponent(id);
+          link.setAttribute('data-speaker-preview', id);
           link.textContent = speaker.name;
           roomCell.appendChild(link);
         });
@@ -201,7 +204,7 @@
       if (this.getAttribute('data-view') === 'schedule' || this.getAttribute('data-view') === 'speakers') return;
       e.preventDefault();
       switchView(this.getAttribute('data-view'));
-      history.pushState(null, '', '#' + this.getAttribute('data-view'));
+      pushRouteHash('#' + this.getAttribute('data-view'));
       if (window.innerWidth <= 768) {
         setSidebarExpanded(false);
       }
@@ -268,6 +271,11 @@
   var modalClose = modalOverlay.querySelector('.modal-close');
 
   var lastHashBeforeModal = '';
+  var speakerModalTrigger = null;
+
+  function speakerBackgroundView() {
+    return (history.state && history.state.speakerView) || (/\/schedule(?:\/index\.html|\/)?$/.test(window.location.pathname) ? 'schedule' : 'speakers');
+  }
 
   function findSpeaker(id) {
     return speakers.find(function (s) { return s.id === id; });
@@ -277,7 +285,9 @@
     var speaker = findSpeaker(speakerId);
     if (!speaker) return;
 
-    lastHashBeforeModal = window.location.hash.indexOf('#speakers/') === 0 ? '#speakers' : (window.location.hash || '#speakers');
+    var activeView = document.querySelector('.view.active');
+    var backgroundView = activeView ? activeView.id.replace('view-', '') : speakerBackgroundView();
+    lastHashBeforeModal = window.location.hash.indexOf('#speakers/') === 0 ? '#' + backgroundView : (window.location.hash || '#' + backgroundView);
 
     modalName.textContent = speaker.name;
     modalTopic.textContent = speaker.topic;
@@ -292,7 +302,7 @@
 
     modalOverlay.classList.add('active');
     document.body.style.overflow = 'hidden';
-    if (window.location.hash !== '#speakers/' + speakerId) history.pushState(null, '', '#speakers/' + speakerId);
+    if (window.location.hash !== '#speakers/' + speakerId) pushRouteHash('#speakers/' + speakerId, { speakerView: backgroundView });
     modalClose.focus();
   }
 
@@ -300,17 +310,20 @@
     modalOverlay.classList.remove('active');
     document.body.style.overflow = '';
     if (lastHashBeforeModal && restoreRoute !== false) {
-      history.pushState(null, '', lastHashBeforeModal);
+      pushRouteHash(lastHashBeforeModal);
       lastHashBeforeModal = '';
     }
     lastHashBeforeModal = '';
+    if (restoreRoute !== false && speakerModalTrigger) speakerModalTrigger.focus({ preventScroll: true });
+    speakerModalTrigger = null;
   }
 
   document.addEventListener('click', function (e) {
-    var card = e.target.closest('.speaker-card');
-    if (card && !e.target.closest('a')) {
-      var speakerId = card.getAttribute('data-speaker');
-      openSpeakerModal(speakerId);
+    var link = e.target.closest('a[data-speaker-preview]');
+    if (link && !e.ctrlKey && !e.metaKey && !e.shiftKey && !e.altKey && e.button === 0) {
+      e.preventDefault();
+      speakerModalTrigger = link;
+      openSpeakerModal(link.getAttribute('data-speaker-preview'));
     }
   });
 
@@ -362,7 +375,7 @@
 
     topicModalOverlay.classList.add('active');
     document.body.style.overflow = 'hidden';
-    if (window.location.hash !== '#topics/' + topicId) history.pushState(null, '', '#topics/' + topicId);
+    if (window.location.hash !== '#topics/' + topicId) pushRouteHash('#topics/' + topicId);
     topicModalClose.focus();
   }
 
@@ -370,7 +383,7 @@
     topicModalOverlay.classList.remove('active');
     document.body.style.overflow = '';
     if (lastHashBeforeTopicModal && restoreRoute !== false) {
-      history.pushState(null, '', lastHashBeforeTopicModal);
+      pushRouteHash(lastHashBeforeTopicModal);
       lastHashBeforeTopicModal = '';
     }
     lastHashBeforeTopicModal = '';
@@ -391,7 +404,7 @@
     if (link) {
       e.preventDefault();
       var speakerId = link.getAttribute('href').replace('#topics/', '');
-      history.pushState(null, '', '#topics/' + speakerId);
+      pushRouteHash('#topics/' + speakerId);
       navigateTo({ view: 'topic-detail', topic: speakerId });
     }
   });
@@ -434,13 +447,12 @@
   function navigateTo(route) {
     if (route.view === 'speaker-detail') {
       closeTopicModal(false);
-      switchView('speakers');
-      // Highlight the speaker card
-      document.querySelectorAll('.speaker-card').forEach(function (card) {
+      switchView(speakerBackgroundView());
+      // Highlight the linked speaker profile when visiting the speakers page.
+      document.querySelectorAll('.speaker-profile').forEach(function (card) {
         var isActive = card.getAttribute('data-speaker') === route.speaker;
-        card.style.borderColor = isActive ? 'var(--cyan)' : '';
-        card.style.boxShadow = isActive ? 'var(--glow-cyan)' : '';
-        if (isActive) {
+        card.classList.toggle('is-selected', isActive);
+        if (isActive && speakerBackgroundView() === 'speakers') {
           card.scrollIntoView({ behavior: 'smooth', block: 'center' });
         }
       });
@@ -453,9 +465,8 @@
       closeSpeakerModal(false);
       closeTopicModal(false);
       switchView(route.view);
-      document.querySelectorAll('.speaker-card').forEach(function (card) {
-        card.style.borderColor = '';
-        card.style.boxShadow = '';
+      document.querySelectorAll('.speaker-profile').forEach(function (card) {
+        card.classList.remove('is-selected');
       });
     }
   }
@@ -471,7 +482,7 @@
     if (link) {
       e.preventDefault();
       var speakerId = link.getAttribute('href').replace('#speakers/', '');
-      history.pushState(null, '', '#speakers/' + speakerId);
+      pushRouteHash('#speakers/' + speakerId);
       navigateTo({ view: 'speaker-detail', speaker: speakerId });
     }
   });
