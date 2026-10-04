@@ -210,14 +210,11 @@
   },
   {
     "id": "pn27-40",
-    "title": "Local AI / Accessibility Demo - Final topic TBD",
+    "title": "",
     "date": "2026-11-07",
     "time": "14:00",
-    "speaker_ids": [
-      "operat0r"
-    ],
-    "end_time": "14:50",
-    "description": "<p>My Local AI Assistent: Protocal-AI ? or LOOK MA NO HANDS Eyetracker/Talon Voice ? or Local AI Agent with PI Agent? Japanese mud balls?</p>"
+    "speaker_ids": [],
+    "end_time": "14:50"
   },
   {
     "id": "pn27-42",

@@ -18,5 +18,6 @@ bios, stacking on mobile.
 Optional `end_time` records the presentation end, including the confirmed split
 Friday evening talks and Saturday's 5:00–5:20 PM talk. Times are local to Murfreesboro.
 
-Operat0r's submission supplies a LinkedIn link instead of a bio; his profile is
-marked pending. His scheduled topic also remains provisional, as in the workbook.
+Operat0r has withdrawn. His Saturday 2:00 PM schedule row is retained with a blank
+title and no speaker, and his profile has been removed. Empty titles represent
+unassigned slots.

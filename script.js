@@ -21,11 +21,11 @@
   // ===== DATA LOADING =====
   function loadData() {
     return Promise.all([
-      fetch('api/v1/speakers.json').then(function (res) {
+      fetch('api/v1/speakers.json?v=pn27-withdrawal').then(function (res) {
         if (!res.ok) throw new Error('Failed to load api/v1/speakers.json: ' + res.status);
         return res.json();
       }),
-      fetch('api/v1/topics.json').then(function (res) {
+      fetch('api/v1/topics.json?v=pn27-withdrawal').then(function (res) {
         if (!res.ok) throw new Error('Failed to load api/v1/topics.json: ' + res.status);
         return res.json();
       })
