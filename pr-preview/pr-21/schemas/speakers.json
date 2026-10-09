@@ -38,6 +38,10 @@
         "type": "string",
         "format": "uri"
       },
+      "mastodon": {
+        "type": "string",
+        "format": "uri"
+      },
       "website": {
         "type": "string",
         "format": "uri"
