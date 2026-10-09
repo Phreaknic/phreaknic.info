@@ -10,6 +10,15 @@
     ]
   },
   {
+    "id": "munano",
+    "name": "munano",
+    "topic": "A Practitioner’s Guide to Prompt Engineering",
+    "initials": "MU",
+    "bio": [
+      "With a background in threat hunting and intelligence, understanding how adversaries operate is a big part of what I do. I spend a lot of time exploring how AI can actually be useful in day-to-day security work. I also have a cat, so cat pictures, memes, and unique cat names are a must."
+    ]
+  },
+  {
     "id": "tyler-crumpton",
     "name": "Tyler Crumpton",
     "topic": "Shelf Label 2: Electric Badge-a-loo",
@@ -60,10 +69,19 @@
   {
     "id": "benthemeek",
     "name": "BenTheMeek",
-    "topic": "It Worked in My Prompts: A Trial-and-Error Journey of Vibe Coding an Audio Book Pipeline Engine",
+    "topic": "Welcome - Ben",
     "initials": "BE",
     "bio": [
       "Ben helps run PhreakNIC. He is actively managed by his wife, three grown daughters, three cats, and an Alaskan Husky. In his free time he loves being outdoors and has listened to at least one or more audio books a week for 20 years.  His first Phreaknic was 13 and he has served in all the positions of the Nashville2600 at one time or another since 2009. \nHe is an Information Security leader for a healthcare company by day and winner of Time Magazine's person of the year in 2006."
+    ]
+  },
+  {
+    "id": "cmex",
+    "name": "cmex",
+    "topic": "Abusing Porn Domains for Fun and Profit",
+    "initials": "CM",
+    "bio": [
+      "Powerful wizard"
     ]
   },
   {
@@ -123,6 +141,15 @@
     ],
     "github": "https://github.com/nuvious",
     "website": "https://www.linkedin.com/in/dcheeseman"
+  },
+  {
+    "id": "lambdacalculus",
+    "name": "LambdaCalculus",
+    "topic": "Veilid: The Internet We Were Promised; The Internet We Will Get!",
+    "initials": "LA",
+    "bio": [
+      "LambdaCalculus is chaos in a trenchcoat. He's a Chaotic Good hacker punk from New Jersey and a community evangelist for Veilid. He's also a member of hackers.town and an educator as well, moonlighting as a Linux sysadmin and Blue Teamer. He's spoken at HOPE and DEF CON, and has been described as a hacker version of Henry Rollins when on stage."
+    ]
   },
   {
     "id": "sh3rware-pronounced-shareware",
