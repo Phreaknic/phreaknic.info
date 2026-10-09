@@ -269,6 +269,7 @@
   var modalAvatar = document.getElementById('modal-avatar-placeholder');
   var modalTwitter = document.getElementById('modal-twitter');
   var modalGithub = document.getElementById('modal-github');
+  var modalMastodon = document.getElementById('modal-mastodon');
   var modalWebsite = document.getElementById('modal-website');
   var modalClose = modalOverlay.querySelector('.modal-close');
 
@@ -296,7 +297,7 @@
     modalAvatar.textContent = speaker.initials;
     modalBio.innerHTML = speaker.bio.map(function (p) { return '<p>' + escapeHtml(p) + '</p>'; }).join('');
 
-    [ [modalTwitter, speaker.twitter], [modalGithub, speaker.github], [modalWebsite, speaker.website] ].forEach(function (item) {
+    [ [modalTwitter, speaker.twitter], [modalGithub, speaker.github], [modalMastodon, speaker.mastodon], [modalWebsite, speaker.website] ].forEach(function (item) {
       item[0].hidden = !item[1];
       if (item[1]) item[0].href = item[1];
       else item[0].removeAttribute('href');

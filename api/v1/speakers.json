@@ -82,7 +82,8 @@
     "initials": "CM",
     "bio": [
       "Powerful wizard"
-    ]
+    ],
+    "twitter": "https://x.com/0x6D6172636F"
   },
   {
     "id": "matt-varian",
@@ -94,8 +95,8 @@
     ]
   },
   {
-    "id": "iteamenathan",
-    "name": "iteamenathan",
+    "id": "itsamenathan",
+    "name": "itsamenathan",
     "topic": "Show Me Your Weiner",
     "initials": "IT",
     "bio": [
@@ -149,7 +150,8 @@
     "initials": "LA",
     "bio": [
       "LambdaCalculus is chaos in a trenchcoat. He's a Chaotic Good hacker punk from New Jersey and a community evangelist for Veilid. He's also a member of hackers.town and an educator as well, moonlighting as a Linux sysadmin and Blue Teamer. He's spoken at HOPE and DEF CON, and has been described as a hacker version of Henry Rollins when on stage."
-    ]
+    ],
+    "mastodon": "https://masto.hackers.town/@lambdacalculus"
   },
   {
     "id": "sh3rware-pronounced-shareware",
