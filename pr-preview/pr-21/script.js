@@ -48,7 +48,13 @@
 
     grid.innerHTML = '';
 
-    data.forEach(function (speaker) {
+    var sortedSpeakers = data.slice().sort(function (a, b) {
+      var nameA = a.name.replace(/^_+/, '').toLowerCase();
+      var nameB = b.name.replace(/^_+/, '').toLowerCase();
+      return nameA.localeCompare(nameB);
+    });
+
+    sortedSpeakers.forEach(function (speaker) {
       var card = document.createElement('article');
       card.className = 'speaker-profile';
       card.id = speaker.id;
