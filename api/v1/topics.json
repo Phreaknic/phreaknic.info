@@ -1,1 +1,298 @@
-[]
+[
+  {
+    "id": "pn27-4",
+    "title": "Registration Open",
+    "date": "2026-11-06",
+    "time": "09:00",
+    "speaker_ids": []
+  },
+  {
+    "id": "pn27-5",
+    "title": "Welcome - Ben",
+    "date": "2026-11-06",
+    "time": "09:30",
+    "speaker_ids": [
+      "benthemeek"
+    ],
+    "end_time": "10:00"
+  },
+  {
+    "id": "pn27-6",
+    "title": "Welcome to PhreakNET",
+    "date": "2026-11-06",
+    "time": "10:00",
+    "speaker_ids": [
+      "nsakey"
+    ],
+    "end_time": "10:20",
+    "description": "<p>For the sake of getting as much info to as many attendees as early as possible, we&#x27;ve brought Welcome to PhreakNET back. This talk will have all the info you&#x27;ll need about the con network and the services running on it, as well as getting connected or connecting your own services. If you miss the talk due to pre-gaming on Thursday night, you&#x27;ll be able to get most of what you need from https://phreaknet.info.</p>"
+  },
+  {
+    "id": "pn27-7",
+    "title": "A Practitioner’s Guide to Prompt Engineering",
+    "date": "2026-11-06",
+    "time": "10:30",
+    "speaker_ids": [
+      "munano"
+    ],
+    "end_time": "11:20",
+    "description": "<p>Generative AI is quickly becoming part of everyday security work, but I’ve found that getting useful, consistent results takes more than simply asking a question and hoping for the best.</p><p>In this session, I’ll walk through a practical approach to prompt engineering for security practitioners. I’ll cover how I think about writing effective instructions, providing the right context, breaking complex tasks into manageable steps, and deciding when a simple workflow is enough versus when an AI agent may actually make sense.</p><p>I’ll also share security-focused examples, common mistakes that can make AI outputs unreliable or overly complicated, and some of the lessons I’ve learned from building and refining AI-assisted workflows.</p><p>My goal is for attendees to leave with practical techniques they can apply immediately, along with a better framework for using AI effectively while keeping human judgment and validation at the center of the process.</p>"
+  },
+  {
+    "id": "pn27-9",
+    "title": "Shelf Label 2: Electric Badge-a-loo",
+    "date": "2026-11-06",
+    "time": "11:30",
+    "speaker_ids": [
+      "tyler-crumpton"
+    ],
+    "end_time": "11:50",
+    "description": "<p>Built on the same recycled hardware as PN26&#x27;s, this year&#x27;s PhreakNIC badge got some sweet upgrades! Come learn about the electronic shelf labels that retired from their day jobs to pursue a life of conference customization, wireless communication, and battery-less operation. We&#x27;ll go over some of the basics of how the badges work, as well as all the nifty new stuff added this year.</p>"
+  },
+  {
+    "id": "pn27-10",
+    "title": "LUNCH",
+    "date": "2026-11-06",
+    "time": "12:00",
+    "speaker_ids": [],
+    "end_time": "13:00"
+  },
+  {
+    "id": "pn27-12",
+    "title": "Do You Want to Build a Snowman^W Blinky Badge?",
+    "date": "2026-11-06",
+    "time": "13:00",
+    "speaker_ids": [
+      "mlp"
+    ],
+    "end_time": "13:50",
+    "description": "<p>Do you have an idea for illuminated wearable bling but you&#x27;re not sure how to translate the idea into physical reality?<br>Even if you&#x27;ve never lifted a soldering iron in anger; couldn&#x27;t identify a surface mount resistor if you stood on one; or wouldn&#x27;t know a schematic diagram from a datasheet; resources, tools, and services are available to help you make your own Thing without paying extortionate moneys. You can also (for now) remain free of AI slop if you wish.</p><p>During this session we will walk through the necessary steps to design and build (or, have someone build for you) a Blinky Badge, including<br>- form factors (badge vs SAO)<br>- PCB art constraints (limited layers vs full-color)<br>- simple sample circuits<br>- types of component (what they do, what they look like, what their limitations are)<br>- how to plagiarize^W embrace-and-extend existing designs<br>- software tools (local vs online)<br>- suppliers<br>- just how much $ does it cost?</p>"
+  },
+  {
+    "id": "pn27-14",
+    "title": "Ham Radio, Digital Modes and Other Fun Stuff!",
+    "date": "2026-11-06",
+    "time": "14:00",
+    "speaker_ids": [
+      "crazyhick"
+    ],
+    "end_time": "14:50",
+    "description": "<p>Ham Radio, Digital modes and other fun stuff!</p>"
+  },
+  {
+    "id": "pn27-16",
+    "title": "I Can't Believe It's Not Malware!",
+    "date": "2026-11-06",
+    "time": "15:00",
+    "speaker_ids": [
+      "altk3y"
+    ],
+    "end_time": "15:50",
+    "description": "<p>A deep dive into the suspicious, the malicious, and the straight-up baffling engineering found in Altk3y&#x27;s drunken online tech purchases. We’ll separate actual supply-chain nightmares from standard factory laziness by dissecting the software and hardware quirks of obscure devices that no sane person should care about. Grab that CH341A and your favorite credit card and get ready to make some questionable life decisions!</p><p>(Watchlist status not included but available for an additional fee.)</p>"
+  },
+  {
+    "id": "pn27-18",
+    "title": "From Hunted to Hunter",
+    "date": "2026-11-06",
+    "time": "16:00",
+    "speaker_ids": [
+      "tipsybacchus"
+    ],
+    "end_time": "16:50",
+    "description": "<p>From Hunted to Hunter - One of the biggest parts of our jobs in security, is OSINT or Open Source Intelligence. When it comes to searching up information on malware or searching up a coworkers weird facebook page. It is a needed skill with a particular mindset. I plan to show you how to get good at doing these searches may it be people, companies, websites, documents and Threat Actors. By the end of the talk, you will know something you didn&#x27;t or at least you will have some fun.</p>"
+  },
+  {
+    "id": "pn27-20",
+    "title": "Abusing Porn Domains for Fun and Profit",
+    "date": "2026-11-06",
+    "time": "17:00",
+    "speaker_ids": [
+      "cmex"
+    ],
+    "end_time": "17:20",
+    "description": "<p>Have you ever set up a wildcard email address or DNS entry for a domain you own? Find out what happens when you register an adult business, purchase some .xxx domains, and do the same. (Talk is SFW).</p>"
+  },
+  {
+    "id": "pn27-21",
+    "title": "DINNER",
+    "date": "2026-11-06",
+    "time": "17:30",
+    "speaker_ids": [],
+    "end_time": "19:00"
+  },
+  {
+    "id": "pn27-24",
+    "title": "ESP-NOW: Wireless for Microcontrollers, Minus the Router",
+    "date": "2026-11-06",
+    "time": "19:00",
+    "speaker_ids": [
+      "matt-varian"
+    ],
+    "end_time": "19:20",
+    "description": "<p>A practical, tour of ESP-NOW: Espressif’s no-AP, protocol for getting packets between ESP chips before DHCP finishes booting. Check out the technology behind this years *non-infringing PhreakNIC Game Show* buzzers.</p>"
+  },
+  {
+    "id": "pn27-25",
+    "title": "Show Me Your Weiner",
+    "date": "2026-11-06",
+    "time": "19:30",
+    "speaker_ids": [
+      "itsamenathan"
+    ],
+    "end_time": "19:50",
+    "description": "<p>I ran a HotDog competition for about year, I will share the results and give out a trophy</p>"
+  },
+  {
+    "id": "pn27-26",
+    "title": "The Singularity of Light: Or, Why the Dark Panopticon Dictates but Does Not Read",
+    "date": "2026-11-06",
+    "time": "20:00",
+    "speaker_ids": [
+      "mog"
+    ],
+    "end_time": "20:50",
+    "description": "<p>The Singularity of Light: Or, Why the Dark Panopticon Dictates but Does Not Read</p>"
+  },
+  {
+    "id": "pn27-28",
+    "title": "Board Games / Hangout",
+    "date": "2026-11-06",
+    "time": "21:00",
+    "speaker_ids": []
+  },
+  {
+    "id": "pn27-30",
+    "title": "Registration Open",
+    "date": "2026-11-07",
+    "time": "09:00",
+    "speaker_ids": []
+  },
+  {
+    "id": "pn27-32",
+    "title": "I’m gonna give some war-stories.",
+    "date": "2026-11-07",
+    "time": "10:00",
+    "speaker_ids": [
+      "lys"
+    ],
+    "end_time": "10:50",
+    "description": "<p>I’m gonna give some war-stories. Mostly talking about some incredible bullshit ive seen over the many ransomware engagements ive ran. I want to talk about how the threat actors have fucked up, how I’ve abused those fuck ups, and how we can deal with extortionware going forward.</p>"
+  },
+  {
+    "id": "pn27-34",
+    "title": "The First Computer - and the Nature of Innovation",
+    "date": "2026-11-07",
+    "time": "11:00",
+    "speaker_ids": [
+      "crashcart"
+    ],
+    "end_time": "11:50",
+    "description": "<p>Computers are ubiquitous today, but there is an origin. A spark of innovation that lit the fires of industry and thought. Singular geniuses building with sweat and toil to create the first computer. This history helps frame how we got where we are today. Come hear CrashCart tell you some stories he probably read on Wikipedia.</p>"
+  },
+  {
+    "id": "pn27-36",
+    "title": "LUNCH",
+    "date": "2026-11-07",
+    "time": "12:00",
+    "speaker_ids": [],
+    "end_time": "13:00"
+  },
+  {
+    "id": "pn27-38",
+    "title": "Strategies for the Post-LLM Job Market",
+    "date": "2026-11-07",
+    "time": "13:00",
+    "speaker_ids": [
+      "nuvious"
+    ],
+    "end_time": "13:50",
+    "description": "<p>For this talk, I will share my advice for people seeking Cybersecurity jobs in the tight post-LLM marketplace. As a technical manager I&#x27;ve been involved in hiring pipelines and mentoring new developers wanting to get into high security jobs including cleared work and cybersecurity in general. My advice will cover basics of resume preparation, interview tactics, and project portfolio preparation. It will also cover the game-theory tactics one can leverage to have end up with the best fit they can find. Finally, I&#x27;ll discuss the role of LLMs in the hiring process and industry in general in terms of the hiring process and major pitfalls that people are making regardless of seniority in the job market. I&#x27;ll also provide my advice on how engineers/security professionals should think about using LLMs as we venture into the future where the bubble may burst and budgets may tighten; though I frame it not in the sense of &quot;don&#x27;t get dependent on them&quot; but rather how to use them intelligently since their use is likely here to stay with the future more being about creating cost effective solutions and enhancing performance without degrading skills.</p><p>If something more formal is desired let me know and I can provide a more detailed rundown of what I want to present.</p>"
+  },
+  {
+    "id": "pn27-40",
+    "title": "Veilid: The Internet We Were Promised; The Internet We Will Get!",
+    "date": "2026-11-07",
+    "time": "14:00",
+    "speaker_ids": [
+      "lambdacalculus"
+    ],
+    "end_time": "14:50",
+    "description": "<p>The Internet is broken, and we all know it. Corporatized, privatized, surveilled heavily, and heavily mined for data. This was never the Internet we were promised back in the day, and what can we do about it?</p><p>Cult of the Dead Cow (cDc) and hackers.town will help break Big Tech’s grip on your privacy! Enter Veilid, an open source, peer-to-peer, mobile-first, network application framework! Breaking the grip of corporatism, no data centers needed (or welcome!), and focused on privacy and security. Data mining, surveillance, and AI slop? Not here; Veilid is by the people and for the people. The super computer in your pocket is both client and server, as is the single board computer on your home lab. Think of Veilid as the super powered love child of Tor and IPFS... similar design but significantly better performance.</p><p>This talk will cover many aspects of Veilid, including applications built on the framework and network, a dive into the technical aspects of Veilid (networking, encryption, languages, protocols), a look at the community behind Veilid, and live demos of voice calls over Veilid, as well as music sharing, chat, and file seeding. Additionally, a Q&amp;A session will be held to help participants ask questions about joining the Veilid community to help build it further.</p>"
+  },
+  {
+    "id": "pn27-42",
+    "title": "Monero: From Zero to Hero",
+    "date": "2026-11-07",
+    "time": "15:00",
+    "speaker_ids": [
+      "sh3rware-pronounced-shareware"
+    ],
+    "end_time": "15:50",
+    "description": "<p>Ah, Monero, the darknet darling and the ire of the IRS. Beloved by ransomware operations and reasonable (reasonably paranoid) operatives alike, Monero has made a name for itself as a suitable stablecoin.</p><p>But how does it work? Why do others swear by it over other cryptocurrencies? And most importantly, how can *I* get some? We&#x27;ll answer all of these questions, as well as the nuances surrounding (nearly) untraceable cryptocurrency and the vibrant ecosystem surrounding it. There will also be a surprise section!</p><p>Maybe you&#x27;re completely new to cryptocurrencies. Maybe you tried to ride the Bitcoin/Dogecoin bull markets. Maybe you&#x27;re a skeptic (yes, *you*) and remember a time when &#x27;crypto&#x27; referred to cryptography, rather than shitcoins and sadness. All are welcome, and rest assured, this is not, nor will it ever be, a sales pitch. Caveat emptor, and come enjoy.</p>"
+  },
+  {
+    "id": "pn27-44",
+    "title": "Current Legal Status of 3D Printed Guns",
+    "date": "2026-11-07",
+    "time": "16:00",
+    "speaker_ids": [
+      "oddball"
+    ],
+    "end_time": "16:50",
+    "description": "<p>Current legal status of 3D printed guns</p>"
+  },
+  {
+    "id": "pn27-46",
+    "title": "Language",
+    "date": "2026-11-07",
+    "time": "17:00",
+    "speaker_ids": [
+      "r0nk"
+    ],
+    "end_time": "17:20",
+    "description": "<p>Are you stuck with the standard &quot;Python and a little bit of C&quot; every hacker seems to already know? Come to a journey through programming languages most hackers have not seriously visited, and explore the implications for language and the way we think overall.</p>"
+  },
+  {
+    "id": "pn27-47",
+    "title": "DINNER",
+    "date": "2026-11-07",
+    "time": "17:30",
+    "speaker_ids": [],
+    "end_time": "19:00"
+  },
+  {
+    "id": "pn27-50",
+    "title": "Fact and Fiction of the Knights Templar",
+    "date": "2026-11-07",
+    "time": "19:00",
+    "speaker_ids": [
+      "elonka"
+    ],
+    "end_time": "19:50",
+    "description": "<p>The mysterious Order of the Knights Templar has inspired centuries of stories, legends, and conspiracy theories. Who were these warrior-monks, and how did they become one of the most powerful organizations of the Middle Ages? What do we really know about their rise, their wealth, their secrets, and their dramatic downfall?</p><p>Were the Templars connected to the Holy Grail? The Priory of Sion? Freemasonry? And how much of what we “know” today comes from later storytellers, including Dan Brown’s The Da Vinci Code? We’ll sift historical fact from accumulated mythology, encountering kings, popes, heresy, secret societies, dubious documents, medieval French poetry, and a few other surprises along the way.</p>"
+  },
+  {
+    "id": "pn27-52",
+    "title": "The Non-Infringing PhreakNIC Game Show!",
+    "date": "2026-11-07",
+    "time": "20:00",
+    "speaker_ids": [],
+    "end_time": "21:00"
+  },
+  {
+    "id": "pn27-54",
+    "title": "Closing Ceremonies",
+    "date": "2026-11-07",
+    "time": "21:00",
+    "speaker_ids": [],
+    "end_time": "21:15"
+  },
+  {
+    "id": "pn27-55",
+    "title": "Lightning Talks",
+    "date": "2026-11-07",
+    "time": "21:15",
+    "speaker_ids": [],
+    "description": "<p>Lightning talks are 5–10 minutes long, and anyone is welcome to give one. Sign-ups will take place at the start of the session. The session will run as long as needed.</p>"
+  }
+]

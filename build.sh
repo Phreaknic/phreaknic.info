@@ -1,6 +1,11 @@
 #!/bin/sh -x
-mkdir build
+mkdir -p build schedule speakers
+for page in schedule speakers; do
+  sed 's|<head>|<head>\n  <base href="../">|' index.html > "$page/index.html"
+done
 for f in index.html \
+schedule \
+speakers \
 api \
 fonts \
 images \

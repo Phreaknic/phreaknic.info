@@ -4,15 +4,14 @@
   "type": "array",
   "items": {
     "type": "object",
-    "required": ["id", "title", "date", "time", "room", "speaker_ids"],
+    "required": ["id", "title", "date", "time", "speaker_ids"],
     "properties": {
       "id": {
         "type": "string",
         "minLength": 1
       },
       "title": {
-        "type": "string",
-        "minLength": 1
+        "type": "string"
       },
       "date": {
         "type": "string",
@@ -25,6 +24,10 @@
       "room": {
         "type": "string",
         "minLength": 1
+      },
+      "end_time": {
+        "type": "string",
+        "pattern": "^\\d{2}:\\d{2}$"
       },
       "speaker_ids": {
         "type": "array",

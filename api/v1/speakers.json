@@ -1,1 +1,194 @@
-[]
+[
+  {
+    "id": "nsakey",
+    "name": "_NSAKEY",
+    "topic": "Welcome to PhreakNET",
+    "initials": "NS",
+    "bio": [
+      "I'm the guy who runs the network. Alcohol may or may not be involved.",
+      "I run PhreakNET and hoard retro games."
+    ]
+  },
+  {
+    "id": "munano",
+    "name": "munano",
+    "topic": "A Practitioner’s Guide to Prompt Engineering",
+    "initials": "MU",
+    "bio": [
+      "With a background in threat hunting and intelligence, understanding how adversaries operate is a big part of what I do. I spend a lot of time exploring how AI can actually be useful in day-to-day security work. I also have a cat, so cat pictures, memes, and unique cat names are a must."
+    ]
+  },
+  {
+    "id": "tyler-crumpton",
+    "name": "Tyler Crumpton",
+    "topic": "Shelf Label 2: Electric Badge-a-loo",
+    "initials": "TY",
+    "bio": [
+      "Tyler's long list of wacky ideas is only outdone by the even longer list of unfinished projects caused by such ideas. He can usually be found debugging microcontroller code and hardware, laser cutting acrylic sheets, and building things that probably shouldn't exist. Software engineer by day; amateur tinkerer by night."
+    ],
+    "website": "https://bsky.app/profile/crump.space"
+  },
+  {
+    "id": "mlp",
+    "name": "mlp",
+    "topic": "Do You Want to Build a Snowman^W Blinky Badge?",
+    "initials": "ML",
+    "bio": [
+      "- is now an Old Fart whose eyesight is not what it was\n- has been called \"the wizard of Aus\"\n- became re-enthused about circuit design after building a badge from scratch a few years ago\n- is absolutely a fan of cheap Chinese manufacturing facilities\n- is not a fan of information gatekeeping\n- is keen on parenthetical notes (even in live conversation)"
+    ]
+  },
+  {
+    "id": "crazyhick",
+    "name": "CrazyHick",
+    "topic": "Ham Radio, Digital Modes and Other Fun Stuff!",
+    "initials": "CR",
+    "bio": [
+      "Infosec Professional, Lifelong nerd, ham radio operation since the age of 13."
+    ],
+    "twitter": "https://x.com/dhickman"
+  },
+  {
+    "id": "altk3y",
+    "name": "Altk3y",
+    "topic": "I Can't Believe It's Not Malware!",
+    "initials": "AL",
+    "bio": [
+      "Altk3y is a Problem as a Service (PaaS) and can’t turn down a side quest. By day, she is a Cloud Security Engineer, by night she’s cramming DOOM in places it was never meant to go and cracking dad jokes on the CounterSurveil Podcast. Her experience spans from creating patented security tech for start ups to mentoring young professionals through ISSA @ KSU. Please ask her about her lord and savior, Linux."
+    ]
+  },
+  {
+    "id": "tipsybacchus",
+    "name": "TipsyBacchus",
+    "topic": "From Hunted to Hunter",
+    "initials": "TI",
+    "bio": [
+      "TipsyBacchus is a SOC Analyst by night and a nosy threat detector by night. His skills include threat intelligence gathering, photography, making stickers and calling the situation room. He hopes all our names are on a list together."
+    ],
+    "twitter": "https://x.com/tipsybacchus"
+  },
+  {
+    "id": "benthemeek",
+    "name": "BenTheMeek",
+    "topic": "Welcome - Ben",
+    "initials": "BE",
+    "bio": [
+      "Ben helps run PhreakNIC. He is actively managed by his wife, three grown daughters, three cats, and an Alaskan Husky. In his free time he loves being outdoors and has listened to at least one or more audio books a week for 20 years.  His first Phreaknic was 13 and he has served in all the positions of the Nashville2600 at one time or another since 2009. \nHe is an Information Security leader for a healthcare company by day and winner of Time Magazine's person of the year in 2006."
+    ]
+  },
+  {
+    "id": "cmex",
+    "name": "cmex",
+    "topic": "Abusing Porn Domains for Fun and Profit",
+    "initials": "CM",
+    "bio": [
+      "Powerful wizard"
+    ],
+    "twitter": "https://x.com/0x6D6172636F"
+  },
+  {
+    "id": "matt-varian",
+    "name": "Matt Varian",
+    "topic": "ESP-NOW: Wireless for Microcontrollers, Minus the Router",
+    "initials": "MA",
+    "bio": [
+      "An aspiring polymath, primarily interested in hardware and begrudgingly works with software."
+    ]
+  },
+  {
+    "id": "itsamenathan",
+    "name": "itsamenathan",
+    "topic": "Show Me Your Weiner",
+    "initials": "IT",
+    "bio": [
+      "I am a homelab and self-hosting enthusiast based in Colorado. Program Director for PhreakNIC and alumnus of Huntsville’s Makers Local 256"
+    ],
+    "website": "https://itsamenathan.xyz/"
+  },
+  {
+    "id": "mog",
+    "name": "Mog",
+    "topic": "The Singularity of Light: Or, Why the Dark Panopticon Dictates but Does Not Read",
+    "initials": "MO",
+    "bio": [
+      "A human, from the planet Earth, was one of them, though as our story opens, he no more knows his destiny than a tea-leaf knows the history of the East India Company. His name is Mog, he is a six-foot tall ape descendant, and someone is trying to drive a bypass through his home. Aliases: 96bcaa76-0f27-45e7-9aa3-65c535e53a05, Matthew O’Gorman, Matt, Dad, just this guy you know"
+    ]
+  },
+  {
+    "id": "lys",
+    "name": "Lys",
+    "topic": "I’m gonna give some war-stories.",
+    "initials": "LY",
+    "bio": [
+      "Lys has spent the last few years bouncing around different roles in infosec. Recently he’s worked as a ransomware recovery consultant where he helps victims of extortion events."
+    ],
+    "twitter": "https://x.com/ly7ine"
+  },
+  {
+    "id": "crashcart",
+    "name": "CrashCart",
+    "topic": "The First Computer - and the Nature of Innovation",
+    "initials": "CR",
+    "bio": [
+      "CrashCart (Tim) likes to resuscitate old computers and game systems when he isn't studying computer science for the fun of it or running developer platforms for the money. A lifelong hacker and maker, he'd hesitate to call himself an \"expert,\" but \"consummate amateur\" might fit. If you talk to him, tell him what your first computer was."
+    ]
+  },
+  {
+    "id": "nuvious",
+    "name": "nuvious",
+    "topic": "Strategies for the Post-LLM Job Market",
+    "initials": "NU",
+    "bio": [
+      "A veteran of both US Navy, private and public sector Cybersecurity including a background in traditional and LLM AI applications and development. Currently working in FINTECH at a fortune 50 as a Lead Cybersecurity engineer. Academically he is working on a Master's degree in Cybersecurity as a student at Johns Hopkins University studying offensive security and AI applications in Cybersecurity. He's presented at Shmoocon 2025 on a high-entropy covert channel built around the QUIC protocol and got 15 minutes of fame on Hacker New for building a Pluggable Authentication Module that takes covert actions when pre-registered duress passwords are used to login."
+    ],
+    "github": "https://github.com/nuvious",
+    "website": "https://www.linkedin.com/in/dcheeseman"
+  },
+  {
+    "id": "lambdacalculus",
+    "name": "LambdaCalculus",
+    "topic": "Veilid: The Internet We Were Promised; The Internet We Will Get!",
+    "initials": "LA",
+    "bio": [
+      "LambdaCalculus is chaos in a trenchcoat. He's a Chaotic Good hacker punk from New Jersey and a community evangelist for Veilid. He's also a member of hackers.town and an educator as well, moonlighting as a Linux sysadmin and Blue Teamer. He's spoken at HOPE and DEF CON, and has been described as a hacker version of Henry Rollins when on stage."
+    ],
+    "mastodon": "https://masto.hackers.town/@lambdacalculus"
+  },
+  {
+    "id": "sh3rware-pronounced-shareware",
+    "name": "sh3rware (Pronounced \"Shareware\")",
+    "topic": "Monero: From Zero to Hero",
+    "initials": "SH",
+    "bio": [
+      "Sh3rware (Pronounced \"Shareware\") believes interested people are interesting, and enjoys quality conversation and quality memes. Please feel free to come up and nerd out about privacy, OSINT, security, or anything else that strikes your fancy. Or just recommend a good book."
+    ]
+  },
+  {
+    "id": "oddball",
+    "name": "Oddball",
+    "topic": "Current Legal Status of 3D Printed Guns",
+    "initials": "OD",
+    "bio": [
+      "Phreaknic's resident gun geek and kilt enthusiast, Oddball has been part of nashville2600 for  25 years.  When he's not talking about guns or working on his 3D printers, he's at work where he's a sysadmin that does more than he probably should with Raspberry Pis."
+    ]
+  },
+  {
+    "id": "r0nk",
+    "name": "r0nk",
+    "topic": "Language",
+    "initials": "RN",
+    "bio": [
+      "r0nk has spent years in the mountains mastering an ancient form of Kung Fu. This form of Kung Fu has since been depreciated."
+    ]
+  },
+  {
+    "id": "elonka",
+    "name": "Elonka",
+    "topic": "Fact and Fiction of the Knights Templar",
+    "initials": "EL",
+    "bio": [
+      "Elonka Dunin is an author, cryptographer, and game developer whose public cryptography career began in 2000 when she became the first person to crack the PhreakNIC v3.0 Code. She is the author of The Mammoth Book of Secret Codes and Cryptograms and co-author of Codebreaking: A Practical Guide, now in its second edition (2023). She co-leads the group working on the Kryptos sculpture at CIA Headquarters, and led the international team that cracked Jim Sanborn’s Cyrillic Projector cipher. Dan Brown, author of The Da Vinci Code, named a character in The Lost Symbol after her: “Nola Kaye,” a scrambled version of “Elonka.”"
+    ],
+    "website": "https://facebook.com/elonka/",
+    "twitter": "https://x.com/ElonkaDunin"
+  }
+]

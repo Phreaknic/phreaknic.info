@@ -1,65 +1,90 @@
 (function () {
   'use strict';
 
-  const navLinks = document.querySelectorAll('.nav-link[data-view]');
-  const views = document.querySelectorAll('.view');
-  const timestampEl = document.querySelector('.timestamp');
-  const countdownEl = document.getElementById('countdown');
-  const sidebar = document.getElementById('site-sidebar');
-  const sidebarToggle = document.querySelector('.sidebar-toggle');
-  const infoToggle = document.querySelector('.info-toggle');
-  const eventInfoPanel = document.getElementById('event-info-panel');
-  const eventDate = new Date('2026-11-06T09:30:00-06:00').getTime();
+  var navLinks = document.querySelectorAll('.nav-link[data-view]');
+  var views = document.querySelectorAll('.view');
+  var timestampEl = document.querySelector('.timestamp');
+  var countdownEl = document.getElementById('countdown');
+  var sidebar = document.getElementById('site-sidebar');
+  var sidebarToggle = document.querySelector('.sidebar-toggle');
+  var infoToggle = document.querySelector('.info-toggle');
+  var eventInfoPanel = document.getElementById('event-info-panel');
+  var eventDate = new Date('2026-11-06T09:30:00-06:00').getTime();
 
-  let speakers = [];
-  let topics = [];
+  var speakers = [];
+  var topics = [];
+
+  function pushRouteHash(hash, state) {
+    history.pushState(state || null, '', window.location.pathname + window.location.search + hash);
+  }
 
   // ===== DATA LOADING =====
   function loadData() {
     return Promise.all([
-      fetch('api/v1/speakers.json').then(function (res) {
+      fetch('api/v1/speakers.json?v=pn27-withdrawal').then(function (res) {
         if (!res.ok) throw new Error('Failed to load api/v1/speakers.json: ' + res.status);
         return res.json();
       }),
-      fetch('api/v1/topics.json').then(function (res) {
+      fetch('api/v1/topics.json?v=pn27-withdrawal').then(function (res) {
         if (!res.ok) throw new Error('Failed to load api/v1/topics.json: ' + res.status);
         return res.json();
       })
     ]).then(function (results) {
       speakers = results[0];
       topics = results[1];
-      renderSpeakerCards(speakers);
+      renderSpeakerProfiles(speakers);
       renderSchedule(topics, speakers);
     }).catch(function (err) {
       console.error(err);
+      document.getElementById('schedule-container').textContent = 'The schedule could not be loaded. Please refresh to try again.';
+      document.getElementById('speakers-grid').textContent = 'The speakers could not be loaded. Please refresh to try again.';
     });
   }
 
   // ===== SPEAKERS =====
-  function renderSpeakerCards(data) {
+  function renderSpeakerProfiles(data) {
     var grid = document.getElementById('speakers-grid');
     if (!grid) return;
 
     grid.innerHTML = '';
 
-    data.forEach(function (speaker) {
-      var card = document.createElement('div');
-      card.className = 'speaker-card';
+    var sortedSpeakers = data.slice().sort(function (a, b) {
+      var nameA = a.name.replace(/^_+/, '').toLowerCase();
+      var nameB = b.name.replace(/^_+/, '').toLowerCase();
+      return nameA.localeCompare(nameB);
+    });
+
+    sortedSpeakers.forEach(function (speaker) {
+      var card = document.createElement('article');
+      card.className = 'speaker-profile';
+      card.id = speaker.id;
       card.setAttribute('data-speaker', speaker.id);
       card.innerHTML =
-        '<div class="speaker-avatar">' +
-          '<div class="avatar-placeholder">' + speaker.initials + '</div>' +
-        '</div>' +
-        '<h3 class="speaker-name">' + speaker.name + '</h3>' +
-        '<p class="speaker-topic">' + speaker.topic + '</p>' +
-        '<p class="speaker-bio">' + speaker.bio[0] + '</p>';
+        '<header class="speaker-heading">' +
+        '<h2 class="speaker-name"><a data-speaker-preview="' + escapeHtml(speaker.id) + '" href="speakers/#speakers/' + encodeURIComponent(speaker.id) + '">' + escapeHtml(speaker.name) + '</a></h2>' +
+        '<p class="speaker-topic">' + escapeHtml(speaker.topic) + '</p></header>' +
+        '<div class="speaker-bio">' + speaker.bio.map(function (p) { return '<p>' + escapeHtml(p) + '</p>'; }).join('') + '</div>';
       grid.appendChild(card);
     });
   }
 
   // ===== SCHEDULE =====
+  function escapeHtml(value) {
+    return String(value).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;').replace(/'/g, '&#39;');
+  }
+
+  function formatTime(value) {
+    var parts = value.split(':');
+    var hour = Number(parts[0]);
+    return (hour % 12 || 12) + ':' + parts[1] + (hour < 12 ? ' AM' : ' PM');
+  }
+
+  function topicTime(topic) {
+    return formatTime(topic.time) + (topic.end_time ? '–' + formatTime(topic.end_time) : '');
+  }
+
   function formatDate(dateStr) {
-    var d = new Date(dateStr + 'T00:00:00');
+    var d = new Date(dateStr + 'T00:00:00Z');
     var days = ['SUN', 'MON', 'TUE', 'WED', 'THU', 'FRI', 'SAT'];
     var months = ['JAN', 'FEB', 'MAR', 'APR', 'MAY', 'JUN', 'JUL', 'AUG', 'SEP', 'OCT', 'NOV', 'DEC'];
     return days[d.getUTCDay()] + ' — ' + months[d.getUTCMonth()] + ' ' + String(d.getUTCDate()).padStart(2, '0') + ', ' + d.getUTCFullYear();
@@ -88,7 +113,7 @@
 
       var dayHeader = document.createElement('h2');
       dayHeader.className = 'day-header';
-      dayHeader.textContent = 'DAY ' + Object.keys(dateGroups).indexOf(date) + ' — ' + formatDate(date);
+      dayHeader.textContent = formatDate(date);
       dayDiv.appendChild(dayHeader);
 
       var table = document.createElement('table');
@@ -98,7 +123,7 @@
           '<tr>' +
             '<th>TIME</th>' +
             '<th>TALK</th>' +
-            '<th>ROOM</th>' +
+            '<th>SPEAKER</th>' +
           '</tr>' +
         '</thead>' +
         '<tbody></tbody>';
@@ -120,15 +145,32 @@
 
         var timeCell = document.createElement('td');
         timeCell.className = 'time-cell';
-        timeCell.textContent = topic.time;
+        timeCell.textContent = topicTime(topic);
 
         var talkCell = document.createElement('td');
         talkCell.className = 'talk-cell';
-        talkCell.textContent = topic.title;
+        if (topic.description) {
+          var titleLink = document.createElement('a');
+          titleLink.href = '#topics/' + topic.id;
+          titleLink.textContent = topic.title;
+          titleLink.className = 'talk-link';
+          talkCell.appendChild(titleLink);
+        } else {
+          talkCell.textContent = topic.title;
+        }
 
         var roomCell = document.createElement('td');
-        roomCell.className = 'room-cell';
-        roomCell.textContent = topic.room;
+        roomCell.className = 'schedule-speakers';
+        topic.speaker_ids.forEach(function (id, index) {
+          var speaker = speakerData.find(function (item) { return item.id === id; });
+          if (!speaker) return;
+          if (index) roomCell.appendChild(document.createTextNode(', '));
+          var link = document.createElement('a');
+          link.href = 'speakers/#speakers/' + encodeURIComponent(id);
+          link.setAttribute('data-speaker-preview', id);
+          link.textContent = speaker.name;
+          roomCell.appendChild(link);
+        });
 
         row.appendChild(timeCell);
         row.appendChild(talkCell);
@@ -136,13 +178,18 @@
         tbody.appendChild(row);
       });
 
-      dayDiv.appendChild(table);
+      var tableWrap = document.createElement('div');
+      tableWrap.className = 'schedule-table-wrap';
+      tableWrap.appendChild(table);
+      dayDiv.appendChild(tableWrap);
       container.appendChild(dayDiv);
     });
   }
 
   // ===== VIEW SWITCHING =====
   function switchView(viewName) {
+    var currentView = document.querySelector('.view.active');
+    var isNewView = !currentView || currentView.id !== 'view-' + viewName;
     navLinks.forEach(function (link) {
       var isActive = false;
       if (viewName === 'speaker-detail') {
@@ -157,14 +204,15 @@
       view.classList.toggle('active', view.id === 'view-' + viewName);
     });
 
-    window.scrollTo({ top: 0, behavior: 'smooth' });
+    if (isNewView) window.scrollTo({ top: 0, behavior: 'smooth' });
   }
 
   navLinks.forEach(function (link) {
     link.addEventListener('click', function (e) {
+      if (this.getAttribute('data-view') === 'schedule' || this.getAttribute('data-view') === 'speakers') return;
       e.preventDefault();
       switchView(this.getAttribute('data-view'));
-      history.pushState(null, '', '#' + this.getAttribute('data-view'));
+      pushRouteHash('#' + this.getAttribute('data-view'));
       if (window.innerWidth <= 768) {
         setSidebarExpanded(false);
       }
@@ -227,10 +275,16 @@
   var modalAvatar = document.getElementById('modal-avatar-placeholder');
   var modalTwitter = document.getElementById('modal-twitter');
   var modalGithub = document.getElementById('modal-github');
+  var modalMastodon = document.getElementById('modal-mastodon');
   var modalWebsite = document.getElementById('modal-website');
-  var modalClose = document.querySelector('.modal-close');
+  var modalClose = modalOverlay.querySelector('.modal-close');
 
   var lastHashBeforeModal = '';
+  var speakerModalTrigger = null;
+
+  function speakerBackgroundView() {
+    return (history.state && history.state.speakerView) || (/\/schedule(?:\/index\.html|\/)?$/.test(window.location.pathname) ? 'schedule' : 'speakers');
+  }
 
   function findSpeaker(id) {
     return speakers.find(function (s) { return s.id === id; });
@@ -240,36 +294,45 @@
     var speaker = findSpeaker(speakerId);
     if (!speaker) return;
 
-    lastHashBeforeModal = window.location.hash;
+    var activeView = document.querySelector('.view.active');
+    var backgroundView = activeView ? activeView.id.replace('view-', '') : speakerBackgroundView();
+    lastHashBeforeModal = window.location.hash.indexOf('#speakers/') === 0 ? '#' + backgroundView : (window.location.hash || '#' + backgroundView);
 
     modalName.textContent = speaker.name;
     modalTopic.textContent = speaker.topic;
     modalAvatar.textContent = speaker.initials;
-    modalBio.innerHTML = speaker.bio.map(function (p) { return '<p>' + p + '</p>'; }).join('');
+    modalBio.innerHTML = speaker.bio.map(function (p) { return '<p>' + escapeHtml(p) + '</p>'; }).join('');
 
-    modalTwitter.href = speaker.twitter;
-    modalGithub.href = speaker.github;
-    modalWebsite.href = speaker.website;
+    [ [modalTwitter, speaker.twitter], [modalGithub, speaker.github], [modalMastodon, speaker.mastodon], [modalWebsite, speaker.website] ].forEach(function (item) {
+      item[0].hidden = !item[1];
+      if (item[1]) item[0].href = item[1];
+      else item[0].removeAttribute('href');
+    });
 
     modalOverlay.classList.add('active');
     document.body.style.overflow = 'hidden';
-    history.pushState(null, '', '#speakers/' + speakerId);
+    if (window.location.hash !== '#speakers/' + speakerId) pushRouteHash('#speakers/' + speakerId, { speakerView: backgroundView });
+    modalClose.focus({ preventScroll: true });
   }
 
-  function closeSpeakerModal() {
+  function closeSpeakerModal(restoreRoute) {
     modalOverlay.classList.remove('active');
     document.body.style.overflow = '';
-    if (lastHashBeforeModal) {
-      history.pushState(null, '', lastHashBeforeModal);
+    if (lastHashBeforeModal && restoreRoute !== false) {
+      pushRouteHash(lastHashBeforeModal);
       lastHashBeforeModal = '';
     }
+    lastHashBeforeModal = '';
+    if (restoreRoute !== false && speakerModalTrigger) speakerModalTrigger.focus({ preventScroll: true });
+    speakerModalTrigger = null;
   }
 
   document.addEventListener('click', function (e) {
-    var card = e.target.closest('.speaker-card');
-    if (card) {
-      var speakerId = card.getAttribute('data-speaker');
-      openSpeakerModal(speakerId);
+    var link = e.target.closest('a[data-speaker-preview]');
+    if (link && !e.ctrlKey && !e.metaKey && !e.shiftKey && !e.altKey && e.button === 0) {
+      e.preventDefault();
+      speakerModalTrigger = link;
+      openSpeakerModal(link.getAttribute('data-speaker-preview'));
     }
   });
 
@@ -309,11 +372,11 @@
     var topic = findTopic(topicId);
     if (!topic) return;
 
-    lastHashBeforeTopicModal = window.location.hash;
+    lastHashBeforeTopicModal = window.location.hash.indexOf('#topics/') === 0 ? '#schedule' : (window.location.hash || '#schedule');
 
     topicModalName.textContent = topic.title;
-    topicModalTopic.textContent = topic.room;
-    topicModalTime.textContent = topic.time;
+    topicModalTopic.textContent = topic.speaker_ids.map(function (id) { return findSpeaker(id).name; }).join(', ');
+    topicModalTime.textContent = formatDate(topic.date) + ' · ' + topicTime(topic);
     topicModalDesc.innerHTML = topic.description
       ? topic.description
       : '<p class="no-description">No description available.</p>';
@@ -321,22 +384,24 @@
 
     topicModalOverlay.classList.add('active');
     document.body.style.overflow = 'hidden';
-    history.pushState(null, '', '#topics/' + topicId);
+    if (window.location.hash !== '#topics/' + topicId) pushRouteHash('#topics/' + topicId);
+    topicModalClose.focus({ preventScroll: true });
   }
 
-  function closeTopicModal() {
+  function closeTopicModal(restoreRoute) {
     topicModalOverlay.classList.remove('active');
     document.body.style.overflow = '';
-    if (lastHashBeforeTopicModal) {
-      history.pushState(null, '', lastHashBeforeTopicModal);
+    if (lastHashBeforeTopicModal && restoreRoute !== false) {
+      pushRouteHash(lastHashBeforeTopicModal);
       lastHashBeforeTopicModal = '';
     }
+    lastHashBeforeTopicModal = '';
   }
 
   // Click handlers for schedule rows and speaker-card links within topic modal
   document.addEventListener('click', function (e) {
     var topicRow = e.target.closest('tr[data-topic]');
-    if (topicRow) {
+    if (topicRow && !e.target.closest('a')) {
       var topicId = topicRow.getAttribute('data-topic');
       var topic = findTopic(topicId);
       if (topic && topic.description) {
@@ -348,7 +413,7 @@
     if (link) {
       e.preventDefault();
       var speakerId = link.getAttribute('href').replace('#topics/', '');
-      history.pushState(null, '', '#topics/' + speakerId);
+      pushRouteHash('#topics/' + speakerId);
       navigateTo({ view: 'topic-detail', topic: speakerId });
     }
   });
@@ -371,7 +436,8 @@
   function parseHash() {
     var hash = window.location.hash.replace('#', '');
 
-    if (!hash) return { view: 'news', speaker: null, topic: null };
+    var page = window.location.pathname.match(/\/(schedule|speakers)(?:\/index\.html|\/)?$/);
+    if (!hash) return { view: page ? page[1] : 'news', speaker: null, topic: null };
 
     // Check for topic detail: #topics/some-id
     var parts = hash.split('/');
@@ -389,53 +455,31 @@
 
   function navigateTo(route) {
     if (route.view === 'speaker-detail') {
-      closeTopicModal();
-      switchView('speakers');
-      // Highlight the speaker card
-      document.querySelectorAll('.speaker-card').forEach(function (card) {
+      closeTopicModal(false);
+      switchView(speakerBackgroundView());
+      // Highlight the linked speaker profile when visiting the speakers page.
+      document.querySelectorAll('.speaker-profile').forEach(function (card) {
         var isActive = card.getAttribute('data-speaker') === route.speaker;
-        card.style.borderColor = isActive ? 'var(--cyan)' : '';
-        card.style.boxShadow = isActive ? 'var(--glow-cyan)' : '';
-        if (isActive) {
-          card.scrollIntoView({ behavior: 'smooth', block: 'center' });
-        }
+        card.classList.toggle('is-selected', isActive);
       });
       openSpeakerModal(route.speaker);
     } else if (route.view === 'topic-detail') {
-      closeSpeakerModal();
+      closeSpeakerModal(false);
       switchView('schedule');
       openTopicModal(route.topic);
     } else {
-      closeSpeakerModal();
-      closeTopicModal();
+      closeSpeakerModal(false);
+      closeTopicModal(false);
       switchView(route.view);
-      document.querySelectorAll('.speaker-card').forEach(function (card) {
-        card.style.borderColor = '';
-        card.style.boxShadow = '';
+      document.querySelectorAll('.speaker-profile').forEach(function (card) {
+        card.classList.remove('is-selected');
       });
     }
   }
 
   // Handle browser back/forward
   window.addEventListener('popstate', function () {
-    var route = parseHash();
-    if (route.view === 'speaker-detail') {
-      navigateTo(route);
-    } else if (route.view === 'topic-detail') {
-      navigateTo(route);
-    } else {
-      if (modalOverlay.classList.contains('active')) {
-        closeSpeakerModal();
-      }
-      if (topicModalOverlay.classList.contains('active')) {
-        closeTopicModal();
-      }
-      switchView(route.view);
-      document.querySelectorAll('.speaker-card').forEach(function (card) {
-        card.style.borderColor = '';
-        card.style.boxShadow = '';
-      });
-    }
+    navigateTo(parseHash());
   });
 
   // Handle clicks on speaker card links within detail nav
@@ -444,7 +488,7 @@
     if (link) {
       e.preventDefault();
       var speakerId = link.getAttribute('href').replace('#speakers/', '');
-      history.pushState(null, '', '#speakers/' + speakerId);
+      pushRouteHash('#speakers/' + speakerId);
       navigateTo({ view: 'speaker-detail', speaker: speakerId });
     }
   });
@@ -521,7 +565,6 @@
 
   // ===== INIT =====
   var initialRoute = parseHash();
-	console.log("initialRoute", initialRoute);
   loadData().then(function () {
     navigateTo(initialRoute);
   });
