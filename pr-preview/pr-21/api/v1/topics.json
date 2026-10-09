@@ -29,11 +29,14 @@
   },
   {
     "id": "pn27-7",
-    "title": "",
+    "title": "A Practitioner’s Guide to Prompt Engineering",
     "date": "2026-11-06",
     "time": "10:30",
-    "speaker_ids": [],
-    "end_time": "11:20"
+    "speaker_ids": [
+      "munano"
+    ],
+    "end_time": "11:20",
+    "description": "<p>Generative AI is quickly becoming part of everyday security work, but I’ve found that getting useful, consistent results takes more than simply asking a question and hoping for the best.</p><p>In this session, I’ll walk through a practical approach to prompt engineering for security practitioners. I’ll cover how I think about writing effective instructions, providing the right context, breaking complex tasks into manageable steps, and deciding when a simple workflow is enough versus when an AI agent may actually make sense.</p><p>I’ll also share security-focused examples, common mistakes that can make AI outputs unreliable or overly complicated, and some of the lessons I’ve learned from building and refining AI-assisted workflows.</p><p>My goal is for attendees to leave with practical techniques they can apply immediately, along with a better framework for using AI effectively while keeping human judgment and validation at the center of the process.</p>"
   },
   {
     "id": "pn27-9",
@@ -100,14 +103,14 @@
   },
   {
     "id": "pn27-20",
-    "title": "It Worked in My Prompts: A Trial-and-Error Journey of Vibe Coding an Audio Book Pipeline Engine",
+    "title": "Abusing Porn Domains for Fun and Profit",
     "date": "2026-11-06",
     "time": "17:00",
     "speaker_ids": [
-      "benthemeek"
+      "cmex"
     ],
-    "end_time": "17:30",
-    "description": "<p>&quot;It Worked in My Prompts: A Trial-and-Error Journey of Vibe Coding an Audio Book pipeline engine&quot;</p>"
+    "end_time": "17:20",
+    "description": "<p>Have you ever set up a wildcard email address or DNS entry for a domain you own? Find out what happens when you register an adult business, purchase some .xxx domains, and do the same. (Talk is SFW).</p>"
   },
   {
     "id": "pn27-21",
@@ -207,11 +210,14 @@
   },
   {
     "id": "pn27-40",
-    "title": "",
+    "title": "Veilid: The Internet We Were Promised; The Internet We Will Get!",
     "date": "2026-11-07",
     "time": "14:00",
-    "speaker_ids": [],
-    "end_time": "14:50"
+    "speaker_ids": [
+      "lambdacalculus"
+    ],
+    "end_time": "14:50",
+    "description": "<p>The Internet is broken, and we all know it. Corporatized, privatized, surveilled heavily, and heavily mined for data. This was never the Internet we were promised back in the day, and what can we do about it?</p><p>Cult of the Dead Cow (cDc) and hackers.town will help break Big Tech’s grip on your privacy! Enter Veilid, an open source, peer-to-peer, mobile-first, network application framework! Breaking the grip of corporatism, no data centers needed (or welcome!), and focused on privacy and security. Data mining, surveillance, and AI slop? Not here; Veilid is by the people and for the people. The super computer in your pocket is both client and server, as is the single board computer on your home lab. Think of Veilid as the super powered love child of Tor and IPFS... similar design but significantly better performance.</p><p>This talk will cover many aspects of Veilid, including applications built on the framework and network, a dive into the technical aspects of Veilid (networking, encryption, languages, protocols), a look at the community behind Veilid, and live demos of voice calls over Veilid, as well as music sharing, chat, and file seeding. Additionally, a Q&amp;A session will be held to help participants ask questions about joining the Veilid community to help build it further.</p>"
   },
   {
     "id": "pn27-42",
