@@ -1522,3 +1522,8 @@ body {
     justify-content: center;
   }
 }
+
+/* Keep the normal site shell around the customizer workspace. */
+.main-content:has(#view-customizer.active) { padding: 0; height: calc(100dvh - 60px); min-height: 0; overflow: hidden; }
+#view-customizer { height: 100%; }
+.customizer-frame { display: block; width: 100%; height: 100%; border: 0; }

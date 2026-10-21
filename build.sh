@@ -1,11 +1,13 @@
 #!/bin/sh -x
-mkdir -p build schedule speakers
-for page in schedule speakers; do
+set -eu
+mkdir -p build schedule speakers badge-customizer
+for page in schedule speakers badge-customizer; do
   sed 's|<head>|<head>\n  <base href="../">|' index.html > "$page/index.html"
 done
 for f in index.html \
 schedule \
 speakers \
+badge-customizer \
 api \
 fonts \
 images \
