@@ -204,12 +204,18 @@
       view.classList.toggle('active', view.id === 'view-' + viewName);
     });
 
+    if (viewName === 'customizer') {
+      var frame = document.querySelector('.customizer-frame');
+      if (!frame.getAttribute('src')) frame.setAttribute('src', frame.getAttribute('data-src'));
+    }
+    document.title = viewName === 'customizer' ? 'Badge Customizer | phreaknic 27' : 'phreaknic 27';
+
     if (isNewView) window.scrollTo({ top: 0, behavior: 'smooth' });
   }
 
   navLinks.forEach(function (link) {
     link.addEventListener('click', function (e) {
-      if (this.getAttribute('data-view') === 'schedule' || this.getAttribute('data-view') === 'speakers') return;
+      if (this.getAttribute('data-view') === 'schedule' || this.getAttribute('data-view') === 'speakers' || this.getAttribute('data-view') === 'customizer') return;
       e.preventDefault();
       switchView(this.getAttribute('data-view'));
       pushRouteHash('#' + this.getAttribute('data-view'));
@@ -436,8 +442,8 @@
   function parseHash() {
     var hash = window.location.hash.replace('#', '');
 
-    var page = window.location.pathname.match(/\/(schedule|speakers)(?:\/index\.html|\/)?$/);
-    if (!hash) return { view: page ? page[1] : 'news', speaker: null, topic: null };
+    var page = window.location.pathname.match(/\/(schedule|speakers|badge-customizer)(?:\/index\.html|\/)?$/);
+    if (!hash) return { view: page ? (page[1] === 'badge-customizer' ? 'customizer' : page[1]) : 'news', speaker: null, topic: null };
 
     // Check for topic detail: #topics/some-id
     var parts = hash.split('/');
