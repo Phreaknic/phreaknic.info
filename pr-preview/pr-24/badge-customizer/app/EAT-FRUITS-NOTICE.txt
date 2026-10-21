@@ -1,0 +1,6 @@
+EatFruits
+Copyright (c) 2026, Tyler Crumpton
+
+Font supplied for Shutter 35 Studio and converted from EatFruits.ttf to
+Three.js typeface JSON. Original font metadata is retained in the bundle.
+A blank space advance is supplied for multiword labels.
