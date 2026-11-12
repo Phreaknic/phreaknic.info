@@ -61,7 +61,7 @@
       card.setAttribute('data-speaker', speaker.id);
       card.innerHTML =
         '<header class="speaker-heading">' +
-        '<h2 class="speaker-name"><a data-speaker-preview="' + escapeHtml(speaker.id) + '" href="speakers/#speakers/' + encodeURIComponent(speaker.id) + '">' + escapeHtml(speaker.name) + '</a></h2>' +
+        '<h2 class="speaker-name"><a data-speaker-preview="' + escapeHtml(speaker.id) + '" href="#speakers/' + encodeURIComponent(speaker.id) + '">' + escapeHtml(speaker.name) + '</a></h2>' +
         '<p class="speaker-topic">' + escapeHtml(speaker.topic) + '</p></header>' +
         '<div class="speaker-bio">' + speaker.bio.map(function (p) { return '<p>' + escapeHtml(p) + '</p>'; }).join('') + '</div>';
       grid.appendChild(card);
@@ -166,7 +166,7 @@
           if (!speaker) return;
           if (index) roomCell.appendChild(document.createTextNode(', '));
           var link = document.createElement('a');
-          link.href = 'speakers/#speakers/' + encodeURIComponent(id);
+          link.href = '#speakers/' + encodeURIComponent(id);
           link.setAttribute('data-speaker-preview', id);
           link.textContent = speaker.name;
           roomCell.appendChild(link);
@@ -215,7 +215,8 @@
 
   navLinks.forEach(function (link) {
     link.addEventListener('click', function (e) {
-      if (this.getAttribute('data-view') === 'schedule' || this.getAttribute('data-view') === 'speakers' || this.getAttribute('data-view') === 'customizer') return;
+      // Links to a different page (the badge customizer) do a normal navigation.
+      if (this.pathname !== window.location.pathname) return;
       e.preventDefault();
       switchView(this.getAttribute('data-view'));
       pushRouteHash('#' + this.getAttribute('data-view'));
@@ -289,7 +290,7 @@
   var speakerModalTrigger = null;
 
   function speakerBackgroundView() {
-    return (history.state && history.state.speakerView) || (/\/schedule(?:\/index\.html|\/)?$/.test(window.location.pathname) ? 'schedule' : 'speakers');
+    return (history.state && history.state.speakerView) || 'speakers';
   }
 
   function findSpeaker(id) {
@@ -442,8 +443,8 @@
   function parseHash() {
     var hash = window.location.hash.replace('#', '');
 
-    var page = window.location.pathname.match(/\/(schedule|speakers|badge-customizer)(?:\/index\.html|\/)?$/);
-    if (!hash) return { view: page ? (page[1] === 'badge-customizer' ? 'customizer' : page[1]) : 'news', speaker: null, topic: null };
+    var page = window.location.pathname.match(/\/(badge-customizer)(?:\/index\.html|\/)?$/);
+    if (!hash) return { view: page ? 'customizer' : 'news', speaker: null, topic: null };
 
     // Check for topic detail: #topics/some-id
     var parts = hash.split('/');
@@ -486,17 +487,6 @@
   // Handle browser back/forward
   window.addEventListener('popstate', function () {
     navigateTo(parseHash());
-  });
-
-  // Handle clicks on speaker card links within detail nav
-  document.addEventListener('click', function (e) {
-    var link = e.target.closest('a[href^="#speakers/"]');
-    if (link) {
-      e.preventDefault();
-      var speakerId = link.getAttribute('href').replace('#speakers/', '');
-      pushRouteHash('#speakers/' + speakerId);
-      navigateTo({ view: 'speaker-detail', speaker: speakerId });
-    }
   });
 
   // ===== TIMESTAMP =====
