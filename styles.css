@@ -610,6 +610,25 @@ body {
   margin-bottom: 16px;
 }
 
+.post-image-float {
+  float: right;
+  width: 280px;
+  max-width: 42%;
+  height: auto;
+  margin: 4px 0 16px 24px;
+  border: 1px solid var(--border-color);
+}
+
+@media (max-width: 768px) {
+  .post-image-float {
+    float: none;
+    display: block;
+    width: 100%;
+    max-width: 340px;
+    margin: 0 auto 20px;
+  }
+}
+
 .post-body .priority-label {
   font-family: 'Orbitron', sans-serif;
   font-size: 0.85rem;
