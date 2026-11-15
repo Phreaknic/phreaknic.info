@@ -513,7 +513,7 @@
 
     if (diff <= 0) {
       if (countdownEl) {
-        countdownEl.textContent = 'EVENT LIVE';
+        countdownEl.textContent = 'Event Past';
       }
       return;
     }
