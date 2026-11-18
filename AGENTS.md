@@ -27,3 +27,4 @@ README.md           — Short project description
 - **Responsive**: fixed sidebar collapses to icon-only on mobile (≤768px).
 - **Countdown** to event date (`2026-11-06T09:30:00-06:00`) in header.
 - **No linting/testing config** — no test framework, no CI.
+- **Cache bust CSS** — when then CSS is updated, change the value in index.html so github doesn't return outdated stylesheets.
