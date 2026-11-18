@@ -1,0 +1,121 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#0a0a0f">
+  <meta name="description" content="Design a custom shutter for your PhreakNIC 27 badge. Draw, add text, import artwork, and download print-ready STLs.">
+  <title>Badge Customizer | phreaknic 27</title>
+  <link rel="icon" href="data:,">
+  <script type="module" crossorigin src="./assets/index-CQavG6PF.js"></script>
+  <link rel="stylesheet" crossorigin href="./assets/index-E251iY9q.css">
+</head>
+<body>
+  <header class="topbar">
+    <div class="brand">
+      <a class="event-logo" href="https://phreaknic.info/" aria-label="PhreakNIC 27 home"><span>phreak</span><span>nic27</span></a>
+      <div class="studio-title"><h1><i data-lucide="save"></i>Badge Customizer</h1><span class="dimensions">Customize your own badge's floppy disk shutter! <button id="moreInfo" class="info-link" aria-haspopup="dialog" aria-controls="badgeInfo">[More info]</button></span></div>
+    </div>
+    <div class="actions">
+      <button id="newProject" title="New file" aria-label="New file"><i data-lucide="file-plus-2"></i></button>
+      <button id="openProject" title="Open design" aria-label="Open design"><i data-lucide="folder-open"></i></button>
+      <button id="saveProject" title="Save design" aria-label="Save design"><i data-lucide="save"></i></button>
+      <button id="download" class="primary" disabled><i data-lucide="download"></i><span>Download STLs</span></button>
+    </div>
+  </header>
+  <main class="workspace">
+    <aside class="settings" aria-label="Design settings">
+      <h2>Filament colors</h2>
+      <div id="palette" class="palette"></div>
+      <label class="field">Inlay depth <span class="input-unit"><input id="depth" type="number" min="0.02" max="1.5" step="0.01" value="0.40"><span>mm</span></span></label>
+      <hr>
+      <h2>Marker</h2>
+      <label class="field">Width <output id="widthValue">2.4 mm</output><input id="markerWidth" type="range" min="0.3" max="8" step="0.1" value="2.4"></label>
+      <hr>
+      <h2>Text</h2>
+      <label class="field">Content<input id="textValue" type="text" value="YOUR NAME" maxlength="80"></label>
+      <label class="field">Font family<select id="fontFamily"><option value="osifont">Osifont</option><option value="overpass" selected>Overpass</option><option value="orbitron">Orbitron</option><option value="ocr-b">OCR-B</option><option value="eat-fruits">Eat Fruits</option></select></label>
+      <div class="field-pair">
+        <label class="field">Size (mm)<input id="fontSize" type="number" min="1" max="30" step="0.5" value="5"></label>
+        <label class="field">Weight<select id="fontWeight"><option value="bold">Bold</option><option value="regular">Regular</option></select></label>
+      </div>
+      <label class="field">Tracking (mm)<input id="tracking" type="number" min="-2" max="10" step="0.1" value="0"></label>
+      <button id="addText" class="wide"><i data-lucide="type"></i>Add text</button>
+      <hr>
+      <h2>Selected object</h2>
+      <fieldset id="selectionFields" disabled>
+        <div class="field-pair">
+          <label class="field">Scale (%)<input id="objectScale" type="number" min="5" max="1000" step="5" value="100"></label>
+          <label class="field">Angle (°)<input id="objectAngle" type="number" min="-360" max="360" step="5" value="0"></label>
+        </div>
+        <div class="object-actions">
+          <button id="lower" title="Send backward" aria-label="Send backward"><i data-lucide="arrow-down"></i></button>
+          <button id="raise" title="Bring forward" aria-label="Bring forward"><i data-lucide="arrow-up"></i></button>
+          <button id="duplicate" title="Duplicate" aria-label="Duplicate"><i data-lucide="copy"></i></button>
+          <button id="delete" title="Delete selected object" aria-label="Delete selected object"><i data-lucide="trash-2"></i></button>
+        </div>
+      </fieldset>
+      <h2 class="layout-heading">Align &amp; distribute</h2>
+      <p id="layoutHint" class="layout-hint">Select objects to arrange.</p>
+      <div class="layout-tools" role="group" aria-label="Align objects">
+        <button data-align="x:start" title="Align left" aria-label="Align left" disabled><i data-lucide="align-start-vertical"></i></button>
+        <button data-align="x:center" title="Center horizontally" aria-label="Center horizontally" disabled><i data-lucide="align-center-vertical"></i></button>
+        <button data-align="x:end" title="Align right" aria-label="Align right" disabled><i data-lucide="align-end-vertical"></i></button>
+        <button data-align="y:start" title="Align top" aria-label="Align top" disabled><i data-lucide="align-start-horizontal"></i></button>
+        <button data-align="y:center" title="Center vertically" aria-label="Center vertically" disabled><i data-lucide="align-center-horizontal"></i></button>
+        <button data-align="y:end" title="Align bottom" aria-label="Align bottom" disabled><i data-lucide="align-end-horizontal"></i></button>
+      </div>
+      <div class="distribution-tools" role="group" aria-label="Distribute objects">
+        <button data-distribute="x" title="Distribute horizontally with equal gaps (3+ objects)" aria-label="Distribute horizontally" disabled><i data-lucide="align-horizontal-space-between"></i>Horizontal</button>
+        <button data-distribute="y" title="Distribute vertically with equal gaps (3+ objects)" aria-label="Distribute vertically" disabled><i data-lucide="align-vertical-space-between"></i>Vertical</button>
+      </div>
+      <div class="selection-tools"><button id="selectAll">Select all</button><button id="clearSelection" disabled>Clear</button></div>
+      <h2 class="objects-heading">Objects <span id="objectCount">0</span></h2>
+      <div id="objects" class="objects"></div>
+    </aside>
+    <section class="editor-pane" aria-label="2D design editor">
+      <div class="pane-head"><h2>Design</h2><div class="toolbar">
+        <div class="modes" role="group" aria-label="Editor tool">
+          <button data-mode="select" title="Select and move" aria-label="Select and move" aria-pressed="false"><i data-lucide="mouse-pointer-2"></i></button>
+          <button data-mode="draw" title="Marker" aria-label="Marker" aria-pressed="true"><i data-lucide="pencil"></i></button>
+        </div>
+        <button id="importSvg" title="Import SVG" aria-label="Import SVG"><i data-lucide="image-plus"></i></button>
+        <button id="undo" title="Undo" aria-label="Undo" disabled><i data-lucide="undo-2"></i></button>
+        <button id="redo" title="Redo" aria-label="Redo" disabled><i data-lucide="redo-2"></i></button>
+      </div></div>
+      <div class="surface-shell">
+        <svg id="designSurface" viewBox="-3 -3 62.64 43.61" role="img" aria-label="Shutter drawing surface">
+          <defs><path id="shutterShape"></path><clipPath id="shutterClip"><use href="#shutterShape" clip-rule="evenodd"></use></clipPath></defs>
+          <g id="designFrame">
+            <use id="baseFill" href="#shutterShape" fill-rule="evenodd"></use>
+            <g id="artLayer" clip-path="url(#shutterClip)"></g>
+            <use href="#shutterShape" class="shutter-stroke"></use>
+            <rect id="selectionBox" hidden></rect>
+          </g>
+        </svg>
+      </div>
+      <div class="pane-foot"><span id="editorStatus">0 objects</span><span>Flat face</span></div>
+    </section>
+    <section class="viewer-pane" aria-label="3D preview">
+      <div class="pane-head"><h2>Preview</h2><div class="toolbar">
+        <button id="topView" title="Flat face view" aria-label="Flat face view"><i data-lucide="square"></i></button>
+        <button id="bottomView" title="Peg side view" aria-label="Peg side view"><i data-lucide="flip-vertical-2"></i></button>
+        <button id="resetCamera" title="Reset 3D view" aria-label="Reset 3D view"><i data-lucide="rotate-3d"></i></button>
+      </div></div>
+      <label class="preview-toggle"><input id="shutterOnly" type="checkbox"> Shutter only</label>
+      <div id="viewer"></div>
+      <div class="pane-foot"><span id="viewerStatus" role="status">Starting geometry engine...</span><span id="partCount"></span></div>
+    </section>
+  </main>
+  <dialog id="badgeInfo" aria-labelledby="badgeInfoTitle">
+    <h2 id="badgeInfoTitle">Customize your PN27 badge!</h2>
+    <p>Your PhreakNIC 27 badge will have LEGO compatible 2x4 socket on the front where the floppy disk shutter would go, and you can design and print your own shutter for it!</p>
+    <p>(I probably can't guarantee that it will fit perfectly, but if you have some LEGO bricks around that fit, it'll help make sure it's at least close!)</p>
+    <p class="info-signature">♥ tc</p>
+    <form method="dialog"><button autofocus>Close</button></form>
+  </dialog>
+  <div id="notice" role="alert" hidden></div>
+  <input id="svgFile" type="file" accept=".svg,image/svg+xml" hidden>
+  <input id="projectFile" type="file" accept=".json,application/json" hidden>
+</body>
+</html>
